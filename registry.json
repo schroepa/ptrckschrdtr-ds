@@ -58,6 +58,87 @@
     },
 
     {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "Form input field with label, hint text, and validation states. Variants: default, error, success. Sizes: sm, md, lg. Supports textarea, required, disabled, readonly. Available as input.astro and input.tsx (React).",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-semantic"
+      ],
+      "files": [
+        {
+          "path": "registry/components/input/input.css",
+          "type": "registry:style",
+          "target": "src/components/ds/input/input.css"
+        },
+        {
+          "path": "registry/components/input/input.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/input/input.astro"
+        },
+        {
+          "path": "registry/components/input/input.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/input/input.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "card",
+      "type": "registry:component",
+      "title": "Card",
+      "description": "Flexible container component with optional header, body, footer, and media slots. Variants: default, outlined, ghost, elevated. Supports interactive hover states and href for clickable cards. React version exports sub-components: CardHeader, CardTitle, CardDescription, CardBody, CardFooter, CardMedia.",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-semantic"
+      ],
+      "files": [
+        {
+          "path": "registry/components/card/card.css",
+          "type": "registry:style",
+          "target": "src/components/ds/card/card.css"
+        },
+        {
+          "path": "registry/components/card/card.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/card/card.astro"
+        },
+        {
+          "path": "registry/components/card/card.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/card/card.tsx"
+        }
+      ]
+    },
+
+    {
+      "name": "badge",
+      "type": "registry:component",
+      "title": "Badge",
+      "description": "Inline label for status, categories, or metadata. Variants: default, primary, secondary, success, warning, error, info. Styles: solid, subtle, outline. Sizes: sm, md, lg. Supports dot indicator.",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-semantic"
+      ],
+      "files": [
+        {
+          "path": "registry/components/badge/badge.css",
+          "type": "registry:style",
+          "target": "src/components/ds/badge/badge.css"
+        },
+        {
+          "path": "registry/components/badge/badge.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/badge/badge.astro"
+        },
+        {
+          "path": "registry/components/badge/badge.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/badge/badge.tsx"
+        }
+      ]
+    },
+
+    {
       "name": "button",
       "type": "registry:component",
       "title": "Button",

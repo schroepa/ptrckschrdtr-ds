@@ -1,0 +1,171 @@
+/**
+ * ptrckschrdtr-ds — Component: Card
+ * ────────────────────────────────────
+ * Variants:   default | outlined | ghost | elevated
+ * Sizes:      sm | md | lg  (controls internal padding)
+ *
+ * Anatomy:
+ *   .card              → outer container
+ *   .card__header      → top section (title, actions)
+ *   .card__title       → heading inside header
+ *   .card__description → subtext inside header
+ *   .card__body        → main content area
+ *   .card__footer      → bottom section (actions, meta)
+ *   .card__media       → full-bleed image/video area (before body)
+ *
+ * Notes:
+ *   - All sub-elements are optional — card can be used as a plain container
+ *   - card__media bleeds to the edges regardless of padding
+ *   - Extend per project: CardShopItem, CardBlogPreview etc. build on .card
+ */
+
+/* ── Component Tokens ──────────────────────────────────── */
+:root {
+  --card-bg:            var(--color-surface-raised);
+  --card-border:        var(--color-border-default);
+  --card-radius:        var(--radius-component);
+  --card-shadow:        var(--shadow-sm);
+  --card-shadow-hover:  var(--shadow-md);
+  --card-transition:    var(--transition-default);
+
+  --card-padding-sm:    var(--space-3);
+  --card-padding-md:    var(--space-5);
+  --card-padding-lg:    var(--space-8);
+
+  --card-title-size:    var(--text-lg);
+  --card-title-weight:  var(--weight-semibold);
+  --card-desc-size:     var(--text-sm);
+
+  --card-footer-border: var(--color-border-subtle);
+  --card-header-border: var(--color-border-subtle);
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+/* ── Sizes ─────────────────────────────────────────────── */
+.card--sm {
+  --card-padding-current: var(--card-padding-sm);
+}
+.card--md,
+.card:not([class*='card--']) {
+  --card-padding-current: var(--card-padding-md);
+}
+.card--lg {
+  --card-padding-current: var(--card-padding-lg);
+}
+
+/* ── Variants ──────────────────────────────────────────── */
+.card--outlined {
+  box-shadow: var(--shadow-none);
+}
+
+.card--ghost {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: var(--shadow-none);
+}
+
+.card--elevated {
+  border-color: transparent;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Interactive (clickable cards) ────────────────────── */
+.card--interactive {
+  cursor: pointer;
+  transition:
+    box-shadow var(--card-transition),
+    transform var(--card-transition);
+}
+
+.card--interactive:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-1px);
+}
+
+.card--interactive:active {
+  transform: translateY(0);
+  box-shadow: var(--card-shadow);
+}
+
+/* ── Media ─────────────────────────────────────────────── */
+.card__media {
+  width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card__media img,
+.card__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.card__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--card-padding-current, var(--card-padding-md));
+  padding-bottom: var(--space-3);
+}
+
+.card__header + .card__body {
+  padding-top: 0;
+}
+
+.card__header--bordered {
+  border-bottom: 1px solid var(--card-header-border);
+  padding-bottom: var(--card-padding-current, var(--card-padding-md));
+}
+
+/* ── Title & Description ───────────────────────────────── */
+.card__title {
+  font-size: var(--card-title-size);
+  font-weight: var(--card-title-weight);
+  color: var(--color-text-default);
+  line-height: var(--leading-snug);
+  margin: 0;
+}
+
+.card__description {
+  font-size: var(--card-desc-size);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+/* ── Body ──────────────────────────────────────────────── */
+.card__body {
+  flex: 1;
+  padding: var(--card-padding-current, var(--card-padding-md));
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+.card__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--card-padding-current, var(--card-padding-md));
+  border-top: 1px solid var(--card-footer-border);
+}
+
+.card__footer--end {
+  justify-content: flex-end;
+}
+
+.card__footer--between {
+  justify-content: space-between;
+}

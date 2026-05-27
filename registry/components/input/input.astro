@@ -1,0 +1,108 @@
+---
+/**
+ * ptrckschrdtr-ds — Input (Astro)
+ *
+ * Props:
+ *   label       — string
+ *   hint        — string  → helper or error text below input
+ *   variant     — 'default' | 'error' | 'success'  (default: 'default')
+ *   size        — 'sm' | 'md' | 'lg'               (default: 'md')
+ *   type        — any HTML input type               (default: 'text')
+ *   textarea    — boolean  → renders <textarea> instead of <input>
+ *   required    — boolean  → adds * to label
+ *   disabled    — boolean
+ *   readonly    — boolean
+ *   placeholder — string
+ *   id          — string  → auto-generated if not provided
+ *   class       — additional CSS classes on the wrapper
+ */
+
+import './input.css'
+
+interface Props {
+  label?: string
+  hint?: string
+  variant?: 'default' | 'error' | 'success'
+  size?: 'sm' | 'md' | 'lg'
+  type?: string
+  textarea?: boolean
+  required?: boolean
+  disabled?: boolean
+  readonly?: boolean
+  placeholder?: string
+  id?: string
+  name?: string
+  value?: string
+  class?: string
+  [key: string]: unknown
+}
+
+const {
+  label,
+  hint,
+  variant = 'default',
+  size = 'md',
+  type = 'text',
+  textarea = false,
+  required = false,
+  disabled = false,
+  readonly = false,
+  placeholder,
+  id = `input-${Math.random().toString(36).slice(2, 7)}`,
+  name,
+  value,
+  class: className,
+  ...rest
+} = Astro.props
+
+const wrapperClasses = [
+  'input-field',
+  variant !== 'default' && `input-field--${variant}`,
+  size !== 'md' && `input-field--${size}`,
+  className,
+].filter(Boolean).join(' ')
+
+const inputClasses = [
+  'input-field__input',
+  textarea && 'input-field__input--textarea',
+].filter(Boolean).join(' ')
+---
+
+<div class={wrapperClasses}>
+  {label && (
+    <label
+      for={id}
+      class:list={['input-field__label', required && 'input-field__label--required']}
+    >
+      {label}
+    </label>
+  )}
+
+  {textarea ? (
+    <textarea
+      id={id}
+      name={name}
+      class={inputClasses}
+      placeholder={placeholder}
+      disabled={disabled}
+      readonly={readonly}
+      required={required}
+      {...rest}
+    >{value}</textarea>
+  ) : (
+    <input
+      id={id}
+      name={name}
+      type={type}
+      class={inputClasses}
+      placeholder={placeholder}
+      value={value}
+      disabled={disabled}
+      readonly={readonly}
+      required={required}
+      {...rest}
+    />
+  )}
+
+  {hint && <span class="input-field__hint">{hint}</span>}
+</div>

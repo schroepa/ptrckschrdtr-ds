@@ -1,0 +1,43 @@
+---
+/**
+ * ptrckschrdtr-ds — Badge (Astro)
+ *
+ * Props:
+ *   variant — 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info'
+ *   style   — 'solid' | 'subtle' | 'outline'  (default: 'solid')
+ *   size    — 'sm' | 'md' | 'lg'              (default: 'md')
+ *   dot     — boolean  → shows a colored dot before the label
+ *   class   — additional CSS classes
+ */
+
+import './badge.css'
+
+interface Props {
+  variant?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info'
+  style?: 'solid' | 'subtle' | 'outline'
+  size?: 'sm' | 'md' | 'lg'
+  dot?: boolean
+  class?: string
+}
+
+const {
+  variant = 'default',
+  style = 'solid',
+  size = 'md',
+  dot = false,
+  class: className,
+} = Astro.props
+
+const classes = [
+  'badge',
+  `badge--${variant}`,
+  style !== 'solid' && `badge--${style}`,
+  size !== 'md' && `badge--${size}`,
+  className,
+].filter(Boolean).join(' ')
+---
+
+<span class={classes}>
+  {dot && <span class="badge__dot" aria-hidden="true" />}
+  <slot />
+</span>

@@ -1,0 +1,108 @@
+---
+/**
+ * ptrckschrdtr-ds — Card (Astro)
+ *
+ * Props:
+ *   variant     — 'default' | 'outlined' | 'ghost' | 'elevated'  (default: 'default')
+ *   size        — 'sm' | 'md' | 'lg'                             (default: 'md')
+ *   interactive — boolean  → hover/active states for clickable cards
+ *   href        — string   → wraps entire card in <a>
+ *   class       — additional CSS classes
+ *
+ * Slots:
+ *   default     → card__body content
+ *   header      → card__header content (replaces auto-generated header)
+ *   footer      → card__footer content
+ *   media       → card__media content (image/video, full-bleed)
+ *
+ * Shorthand props (generate header automatically):
+ *   title       — string
+ *   description — string
+ *   headerBordered — boolean
+ *
+ * Usage:
+ *   <!-- Simple -->
+ *   <Card title="Hello" description="World">Body content</Card>
+ *
+ *   <!-- Full control via slots -->
+ *   <Card>
+ *     <img slot="media" src="..." alt="..." />
+ *     <Fragment slot="header"><h2>Title</h2></Fragment>
+ *     Body content
+ *     <Fragment slot="footer"><Button>Action</Button></Fragment>
+ *   </Card>
+ */
+
+import './card.css'
+
+interface Props {
+  variant?: 'default' | 'outlined' | 'ghost' | 'elevated'
+  size?: 'sm' | 'md' | 'lg'
+  interactive?: boolean
+  href?: string
+  title?: string
+  description?: string
+  headerBordered?: boolean
+  class?: string
+  [key: string]: unknown
+}
+
+const {
+  variant = 'default',
+  size = 'md',
+  interactive = false,
+  href,
+  title,
+  description,
+  headerBordered = false,
+  class: className,
+  ...rest
+} = Astro.props
+
+const Tag = href ? 'a' : 'div'
+
+const classes = [
+  'card',
+  variant !== 'default' && `card--${variant}`,
+  size !== 'md' && `card--${size}`,
+  interactive && 'card--interactive',
+  className,
+].filter(Boolean).join(' ')
+
+const hasHeader = title || description || Astro.slots.has('header')
+const hasFooter = Astro.slots.has('footer')
+const hasMedia = Astro.slots.has('media')
+---
+
+<Tag class={classes} href={href} {...rest}>
+
+  {hasMedia && (
+    <div class="card__media">
+      <slot name="media" />
+    </div>
+  )}
+
+  {hasHeader && (
+    <div class:list={['card__header', headerBordered && 'card__header--bordered']}>
+      {Astro.slots.has('header') ? (
+        <slot name="header" />
+      ) : (
+        <>
+          {title && <h3 class="card__title">{title}</h3>}
+          {description && <p class="card__description">{description}</p>}
+        </>
+      )}
+    </div>
+  )}
+
+  <div class="card__body">
+    <slot />
+  </div>
+
+  {hasFooter && (
+    <div class="card__footer">
+      <slot name="footer" />
+    </div>
+  )}
+
+</Tag>
