@@ -1,0 +1,14 @@
+{
+  "name": "ptrckschrdtr-ds",
+  "version": "0.1.0",
+  "description": "Personal design system registry by @ptrckschrdtr. Multi-brand, framework-agnostic, built on shadcn registry.",
+  "homepage": "https://ds.ptrckschrdtr.de",
+  "scripts": {
+    "registry:build": "shadcn build",
+    "registry:build:watch": "shadcn build --watch",
+    "dev": "your-framework dev"
+  },
+  "devDependencies": {
+    "shadcn": "latest"
+  }
+}

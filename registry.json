@@ -1,0 +1,88 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ptrckschrdtr-ds",
+  "homepage": "https://ds.ptrckschrdtr.de",
+  "items": [
+
+    {
+      "name": "tokens-base",
+      "type": "registry:style",
+      "title": "Base Tokens",
+      "description": "Primitive values (colors, spacing, radius, typography, shadows, motion). Always install this first — it is the foundation of the entire system.",
+      "files": [
+        {
+          "path": "registry/tokens/base/primitives.css",
+          "type": "registry:style",
+          "target": "src/styles/ds/primitives.css"
+        },
+        {
+          "path": "registry/tokens/base/reset.css",
+          "type": "registry:style",
+          "target": "src/styles/ds/reset.css"
+        }
+      ]
+    },
+
+    {
+      "name": "tokens-semantic",
+      "type": "registry:style",
+      "title": "Semantic Tokens",
+      "description": "Semantic token layer that maps primitives to meaning (brand, surface, text, border, status). Install after tokens-base. Brand themes override these slots.",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-base"
+      ],
+      "files": [
+        {
+          "path": "registry/tokens/semantic/semantic.css",
+          "type": "registry:style",
+          "target": "src/styles/ds/semantic.css"
+        }
+      ]
+    },
+
+    {
+      "name": "theme-example",
+      "type": "registry:style",
+      "title": "Theme: Example Brand",
+      "description": "Starter brand theme. Duplicate this file and rename it theme-[your-brand].css to create a new brand. Override the semantic slots with your brand values.",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-semantic"
+      ],
+      "files": [
+        {
+          "path": "registry/tokens/themes/example/theme.css",
+          "type": "registry:style",
+          "target": "src/styles/ds/theme.css"
+        }
+      ]
+    },
+
+    {
+      "name": "button",
+      "type": "registry:component",
+      "title": "Button",
+      "description": "Base button component. Variants: primary, secondary, ghost, danger. Sizes: sm, md, lg. Supports href (renders as <a>), loading state, icon-only, and full-width. Available as button.astro and button.tsx (React).",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-semantic"
+      ],
+      "files": [
+        {
+          "path": "registry/components/button/button.css",
+          "type": "registry:style",
+          "target": "src/components/ds/button/button.css"
+        },
+        {
+          "path": "registry/components/button/button.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/button/button.astro"
+        },
+        {
+          "path": "registry/components/button/button.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/button/button.tsx"
+        }
+      ]
+    }
+
+  ]
+}

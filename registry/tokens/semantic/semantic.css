@@ -1,0 +1,160 @@
+/**
+ * ptrckschrdtr-ds — Semantic Tokens
+ * ────────────────────────────────────
+ * These are the slots every brand MUST fill.
+ * Defaults point to the primitive blue palette.
+ * Override all of these in your theme-[brand].css.
+ *
+ * Sections:
+ *   1. Color — Brand
+ *   2. Color — Surface & Background
+ *   3. Color — Text
+ *   4. Color — Border
+ *   5. Color — Status
+ *   6. Typography
+ *   7. Spacing
+ *   8. Radius
+ *   9. Shadow
+ *  10. Motion
+ *  11. Z-Index
+ */
+
+:root {
+
+  /* ── 1. Color: Brand ─────────────────────────────────── */
+  /* Primary brand color and its variants                   */
+  --color-brand-primary:          var(--primitive-brand-500);
+  --color-brand-primary-hover:    var(--primitive-brand-600);
+  --color-brand-primary-active:   var(--primitive-brand-700);
+  --color-brand-primary-subtle:   var(--primitive-brand-50);
+  --color-brand-primary-contrast: var(--primitive-neutral-0);  /* text on primary bg */
+
+  /* Secondary brand color — can be accent, complement, etc. */
+  --color-brand-secondary:          var(--primitive-brand-200);
+  --color-brand-secondary-hover:    var(--primitive-brand-300);
+  --color-brand-secondary-active:   var(--primitive-brand-400);
+  --color-brand-secondary-subtle:   var(--primitive-brand-50);
+  --color-brand-secondary-contrast: var(--primitive-brand-900);
+
+  /* ── 2. Color: Surface & Background ─────────────────── */
+  --color-bg-default:   var(--primitive-neutral-0);
+  --color-bg-subtle:    var(--primitive-neutral-50);
+  --color-bg-muted:     var(--primitive-neutral-100);
+  --color-bg-emphasis:  var(--primitive-neutral-900);
+
+  --color-surface-default:  var(--primitive-neutral-0);
+  --color-surface-raised:   var(--primitive-neutral-0);    /* cards, popovers */
+  --color-surface-overlay:  var(--primitive-neutral-0);    /* modals, dialogs */
+
+  /* ── 3. Color: Text ──────────────────────────────────── */
+  --color-text-default:   var(--primitive-neutral-900);
+  --color-text-muted:     var(--primitive-neutral-500);
+  --color-text-subtle:    var(--primitive-neutral-400);
+  --color-text-disabled:  var(--primitive-neutral-300);
+  --color-text-inverse:   var(--primitive-neutral-0);
+  --color-text-link:      var(--color-brand-primary);
+  --color-text-link-hover:var(--color-brand-primary-hover);
+
+  /* ── 4. Color: Border ────────────────────────────────── */
+  --color-border-default: var(--primitive-neutral-200);
+  --color-border-strong:  var(--primitive-neutral-400);
+  --color-border-subtle:  var(--primitive-neutral-100);
+  --color-border-focus:   var(--color-brand-primary);
+
+  /* ── 5. Color: Status ────────────────────────────────── */
+  --color-status-success:         var(--primitive-success-500);
+  --color-status-success-subtle:  var(--primitive-success-400);
+  --color-status-success-bg:      #f0fdf4;
+
+  --color-status-warning:         var(--primitive-warning-500);
+  --color-status-warning-subtle:  var(--primitive-warning-400);
+  --color-status-warning-bg:      #fefce8;
+
+  --color-status-error:           var(--primitive-error-500);
+  --color-status-error-subtle:    var(--primitive-error-400);
+  --color-status-error-bg:        #fef2f2;
+
+  --color-status-info:            var(--primitive-info-500);
+  --color-status-info-subtle:     var(--primitive-info-400);
+  --color-status-info-bg:         #f0f9ff;
+
+  /* ── 6. Typography ───────────────────────────────────── */
+  --font-sans:   var(--primitive-font-sans);
+  --font-serif:  var(--primitive-font-serif);
+  --font-mono:   var(--primitive-font-mono);
+  --font-display: var(--font-sans);   /* override for display/heading font */
+
+  --text-xs:   var(--primitive-text-xs);
+  --text-sm:   var(--primitive-text-sm);
+  --text-md:   var(--primitive-text-md);
+  --text-lg:   var(--primitive-text-lg);
+  --text-xl:   var(--primitive-text-xl);
+  --text-2xl:  var(--primitive-text-2xl);
+  --text-3xl:  var(--primitive-text-3xl);
+  --text-4xl:  var(--primitive-text-4xl);
+  --text-5xl:  var(--primitive-text-5xl);
+
+  --weight-normal:   var(--primitive-weight-normal);
+  --weight-medium:   var(--primitive-weight-medium);
+  --weight-semibold: var(--primitive-weight-semibold);
+  --weight-bold:     var(--primitive-weight-bold);
+
+  --leading-none:    var(--primitive-leading-none);
+  --leading-tight:   var(--primitive-leading-tight);
+  --leading-snug:    var(--primitive-leading-snug);
+  --leading-normal:  var(--primitive-leading-normal);
+  --leading-relaxed: var(--primitive-leading-relaxed);
+
+  /* ── 7. Spacing ──────────────────────────────────────── */
+  --space-0:  var(--primitive-space-0);
+  --space-1:  var(--primitive-space-1);
+  --space-2:  var(--primitive-space-2);
+  --space-3:  var(--primitive-space-3);
+  --space-4:  var(--primitive-space-4);
+  --space-5:  var(--primitive-space-5);
+  --space-6:  var(--primitive-space-6);
+  --space-8:  var(--primitive-space-8);
+  --space-10: var(--primitive-space-10);
+  --space-12: var(--primitive-space-12);
+  --space-16: var(--primitive-space-16);
+  --space-20: var(--primitive-space-20);
+  --space-24: var(--primitive-space-24);
+
+  /* ── 8. Radius ───────────────────────────────────────── */
+  --radius-none: var(--primitive-radius-none);
+  --radius-sm:   var(--primitive-radius-sm);
+  --radius-md:   var(--primitive-radius-md);
+  --radius-lg:   var(--primitive-radius-lg);
+  --radius-xl:   var(--primitive-radius-xl);
+  --radius-2xl:  var(--primitive-radius-2xl);
+  --radius-full: var(--primitive-radius-full);
+
+  /* Global component radius — brands override this one value
+     to shift the feel of the entire system (sharp vs. rounded) */
+  --radius-component: var(--radius-md);
+
+  /* ── 9. Shadow ───────────────────────────────────────── */
+  --shadow-sm:   var(--primitive-shadow-sm);
+  --shadow-md:   var(--primitive-shadow-md);
+  --shadow-lg:   var(--primitive-shadow-lg);
+  --shadow-xl:   var(--primitive-shadow-xl);
+  --shadow-none: var(--primitive-shadow-none);
+
+  /* ── 10. Motion ──────────────────────────────────────── */
+  --duration-fast:   var(--primitive-duration-fast);
+  --duration-normal: var(--primitive-duration-normal);
+  --duration-slow:   var(--primitive-duration-slow);
+  --ease-default:    var(--primitive-ease-default);
+  --ease-in:         var(--primitive-ease-in);
+  --ease-out:        var(--primitive-ease-out);
+
+  --transition-default: var(--duration-normal) var(--ease-default);
+
+  /* ── 11. Z-Index ─────────────────────────────────────── */
+  --z-base:    var(--primitive-z-base);
+  --z-raised:  var(--primitive-z-raised);
+  --z-overlay: var(--primitive-z-overlay);
+  --z-modal:   var(--primitive-z-modal);
+  --z-toast:   var(--primitive-z-toast);
+  --z-tooltip: var(--primitive-z-tooltip);
+}

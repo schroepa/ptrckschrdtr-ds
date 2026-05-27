@@ -1,0 +1,93 @@
+/**
+ * ptrckschrdtr-ds — Theme: Example Brand
+ * ─────────────────────────────────────────
+ * This is your brand theme template.
+ * Duplicate this file, rename it theme-[your-brand].css,
+ * and fill in your brand values.
+ *
+ * You only need to override what's different from the defaults.
+ * At minimum: fill in the Brand + Typography sections.
+ *
+ * To use custom fonts, import them before this file, e.g.:
+ * @import url('https://fonts.googleapis.com/css2?family=...');
+ */
+
+:root {
+
+  /* ── Brand Colors ─────────────────────────────────────
+   * Define your brand palette as primitives first,
+   * then map them to semantic slots below.
+   * ───────────────────────────────────────────────────── */
+
+  /* Step 1: Define your brand palette */
+  --example-coral-50:  #fff5f5;
+  --example-coral-100: #ffe3e3;
+  --example-coral-400: #ff6b6b;
+  --example-coral-500: #fa5252;
+  --example-coral-600: #f03e3e;
+  --example-coral-700: #c92a2a;
+  --example-coral-900: #862e2e;
+
+  --example-teal-50:   #e6fcf5;
+  --example-teal-500:  #20c997;
+  --example-teal-600:  #12b886;
+  --example-teal-700:  #0ca678;
+
+  /* Step 2: Map to semantic slots */
+  --color-brand-primary:          var(--example-coral-500);
+  --color-brand-primary-hover:    var(--example-coral-600);
+  --color-brand-primary-active:   var(--example-coral-700);
+  --color-brand-primary-subtle:   var(--example-coral-50);
+  --color-brand-primary-contrast: #ffffff;
+
+  --color-brand-secondary:          var(--example-teal-500);
+  --color-brand-secondary-hover:    var(--example-teal-600);
+  --color-brand-secondary-active:   var(--example-teal-700);
+  --color-brand-secondary-subtle:   var(--example-teal-50);
+  --color-brand-secondary-contrast: #ffffff;
+
+  /* ── Typography ───────────────────────────────────────
+   * Override font stacks. Import your fonts first.
+   * ───────────────────────────────────────────────────── */
+  --font-sans:    'Your Body Font', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Your Display Font', ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    'Your Mono Font', ui-monospace, monospace;
+
+  /* ── Radius ───────────────────────────────────────────
+   * One value shifts the feel of the entire system.
+   * Options: --radius-none (sharp) → --radius-2xl (very rounded)
+   * ───────────────────────────────────────────────────── */
+  --radius-component: var(--radius-lg);
+
+  /* ── Surfaces ─────────────────────────────────────────
+   * Override if your brand uses a non-white background.
+   * ───────────────────────────────────────────────────── */
+  /* --color-bg-default:  #fafaf8; */
+  /* --color-bg-subtle:   #f0f0ec; */
+
+  /* ── Dark Mode ────────────────────────────────────────
+   * Wrap dark overrides in a [data-theme="dark"] selector
+   * or a @media (prefers-color-scheme: dark) block.
+   * ───────────────────────────────────────────────────── */
+}
+
+[data-theme="dark"] {
+  --color-bg-default:      #0f0f0f;
+  --color-bg-subtle:       #1a1a1a;
+  --color-bg-muted:        #262626;
+  --color-bg-emphasis:     #f5f5f5;
+
+  --color-surface-default: #1a1a1a;
+  --color-surface-raised:  #242424;
+  --color-surface-overlay: #2e2e2e;
+
+  --color-text-default:    #f5f5f5;
+  --color-text-muted:      #a3a3a3;
+  --color-text-subtle:     #737373;
+  --color-text-disabled:   #525252;
+  --color-text-inverse:    #0f0f0f;
+
+  --color-border-default:  #2e2e2e;
+  --color-border-strong:   #525252;
+  --color-border-subtle:   #1f1f1f;
+}
