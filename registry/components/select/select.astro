@@ -1,0 +1,88 @@
+---
+/**
+ * ptrckschrdtr-ds — Select (Astro)
+ *
+ * Props:
+ *   label    — string
+ *   hint     — string  → helper or error text below select
+ *   variant  — 'default' | 'error' | 'success'  (default: 'default')
+ *   size     — 'sm' | 'md' | 'lg'               (default: 'md')
+ *   multiple — boolean  → renders listbox mode
+ *   required — boolean  → adds * to label
+ *   disabled — boolean
+ *   name     — string
+ *   id       — string  → auto-generated if not provided
+ *   class    — additional CSS classes on the wrapper
+ *
+ * Usage:
+ *   <Select label="Country" hint="Select your country.">
+ *     <option value="">Choose…</option>
+ *     <option value="de">Germany</option>
+ *   </Select>
+ */
+
+import './select.css'
+
+interface Props {
+  label?: string
+  hint?: string
+  variant?: 'default' | 'error' | 'success'
+  size?: 'sm' | 'md' | 'lg'
+  multiple?: boolean
+  required?: boolean
+  disabled?: boolean
+  name?: string
+  id?: string
+  class?: string
+  [key: string]: unknown
+}
+
+const {
+  label,
+  hint,
+  variant = 'default',
+  size = 'md',
+  multiple = false,
+  required = false,
+  disabled = false,
+  name,
+  id = `select-${Math.random().toString(36).slice(2, 7)}`,
+  class: className,
+  ...rest
+} = Astro.props
+
+const wrapperClasses = [
+  'select-field',
+  variant !== 'default' && `select-field--${variant}`,
+  size !== 'md' && `select-field--${size}`,
+  multiple && 'select-field--multiple',
+  className,
+].filter(Boolean).join(' ')
+---
+
+<div class={wrapperClasses}>
+  {label && (
+    <label
+      for={id}
+      class:list={['select-field__label', required && 'select-field__label--required']}
+    >
+      {label}
+    </label>
+  )}
+
+  <div class="select-field__control">
+    <select
+      id={id}
+      name={name}
+      class="select-field__select"
+      multiple={multiple}
+      required={required}
+      disabled={disabled}
+      {...rest}
+    >
+      <slot />
+    </select>
+  </div>
+
+  {hint && <span class="select-field__hint">{hint}</span>}
+</div>
