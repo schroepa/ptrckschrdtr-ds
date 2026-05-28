@@ -1,0 +1,208 @@
+/**
+ * ptrckschrdtr-ds — Component: Select
+ * ────────────────────────────────────
+ * Variants:   default | error | success
+ * Sizes:      sm | md | lg
+ * States:     focus, disabled, multiple
+ *
+ * Anatomy:
+ *   .select-field           → wrapper (label + control + hint)
+ *   .select-field__label    → label text
+ *   .select-field__control  → chevron anchor (position: relative)
+ *   .select-field__select   → native <select> element
+ *   .select-field__hint     → helper or error text below
+ */
+
+/* ── Component Tokens ──────────────────────────────────── */
+:root {
+  --select-font-family:      var(--font-sans);
+  --select-font-size:        var(--text-sm);
+  --select-radius:           var(--radius-component);
+  --select-transition:       var(--transition-default);
+
+  --select-border:           var(--color-border-default);
+  --select-border-focus:     var(--color-border-focus);
+  --select-border-error:     var(--color-status-error);
+  --select-border-success:   var(--color-status-success);
+
+  --select-bg:               var(--color-surface-default);
+  --select-bg-disabled:      var(--color-bg-muted);
+
+  --select-text:             var(--color-text-default);
+  --select-text-placeholder: var(--color-text-subtle);
+  --select-text-disabled:    var(--color-text-disabled);
+
+  --select-label-size:       var(--text-sm);
+  --select-label-weight:     var(--weight-medium);
+  --select-label-color:      var(--color-text-default);
+
+  --select-hint-size:        var(--text-xs);
+  --select-hint-color:       var(--color-text-muted);
+
+  --select-icon-color:       var(--color-text-muted);
+
+  --select-padding-x-sm:     var(--space-2);
+  --select-padding-y-sm:     var(--space-1);
+  --select-padding-x-md:     var(--space-3);
+  --select-padding-y-md:     var(--space-2);
+  --select-padding-x-lg:     var(--space-4);
+  --select-padding-y-lg:     var(--space-3);
+}
+
+/* ── Field Wrapper ─────────────────────────────────────── */
+.select-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+}
+
+/* ── Label ─────────────────────────────────────────────── */
+.select-field__label {
+  font-family: var(--select-font-family);
+  font-size: var(--select-label-size);
+  font-weight: var(--select-label-weight);
+  color: var(--select-label-color);
+  line-height: var(--leading-snug);
+}
+
+.select-field__label--required::after {
+  content: ' *';
+  color: var(--color-status-error);
+}
+
+/* ── Control (chevron anchor) ──────────────────────────── */
+.select-field__control {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Select Element ────────────────────────────────────── */
+.select-field__select {
+  width: 100%;
+  font-family: var(--select-font-family);
+  font-size: var(--select-font-size);
+  color: var(--select-text);
+  background-color: var(--select-bg);
+  border: 1px solid var(--select-border);
+  border-radius: var(--select-radius);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition:
+    border-color var(--select-transition),
+    box-shadow var(--select-transition),
+    background-color var(--select-transition);
+
+  /* Default size: md — extra padding-right makes room for the chevron */
+  padding: var(--select-padding-y-md) calc(var(--select-padding-x-md) + 1.75rem) var(--select-padding-y-md) var(--select-padding-x-md);
+}
+
+.select-field__select:focus {
+  border-color: var(--select-border-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-border-focus) 15%, transparent);
+}
+
+.select-field__select:disabled {
+  background-color: var(--select-bg-disabled);
+  color: var(--select-text-disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ── Chevron Icon ──────────────────────────────────────── */
+/* mask-image technique: background-color provides the icon color,
+   the SVG mask defines the shape — works with any --select-icon-color value */
+.select-field__control::after {
+  content: '';
+  position: absolute;
+  right: var(--select-padding-x-md);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  background-color: var(--select-icon-color);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+/* ── Sizes ─────────────────────────────────────────────── */
+.select-field--sm .select-field__select {
+  font-size: var(--text-xs);
+  padding: var(--select-padding-y-sm) calc(var(--select-padding-x-sm) + 1.75rem) var(--select-padding-y-sm) var(--select-padding-x-sm);
+}
+
+.select-field--sm .select-field__control::after {
+  right: var(--select-padding-x-sm);
+}
+
+.select-field--lg .select-field__select {
+  font-size: var(--text-md);
+  padding: var(--select-padding-y-lg) calc(var(--select-padding-x-lg) + 1.75rem) var(--select-padding-y-lg) var(--select-padding-x-lg);
+}
+
+.select-field--lg .select-field__control::after {
+  right: var(--select-padding-x-lg);
+}
+
+/* ── Variant: Error ────────────────────────────────────── */
+.select-field--error .select-field__select {
+  border-color: var(--select-border-error);
+}
+
+.select-field--error .select-field__select:focus {
+  border-color: var(--select-border-error);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 15%, transparent);
+}
+
+.select-field--error .select-field__hint {
+  color: var(--color-status-error);
+}
+
+/* ── Variant: Success ──────────────────────────────────── */
+.select-field--success .select-field__select {
+  border-color: var(--select-border-success);
+}
+
+.select-field--success .select-field__select:focus {
+  border-color: var(--select-border-success);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-success) 15%, transparent);
+}
+
+.select-field--success .select-field__hint {
+  color: var(--color-status-success);
+}
+
+/* ── Multiple Mode ─────────────────────────────────────── */
+/* Listbox mode: no chevron, symmetric padding */
+.select-field--multiple .select-field__select {
+  padding-right: var(--select-padding-x-md);
+  cursor: auto;
+}
+
+.select-field--multiple.select-field--sm .select-field__select {
+  padding-right: var(--select-padding-x-sm);
+}
+
+.select-field--multiple.select-field--lg .select-field__select {
+  padding-right: var(--select-padding-x-lg);
+}
+
+.select-field--multiple .select-field__control::after {
+  display: none;
+}
+
+/* ── Hint / Helper Text ────────────────────────────────– */
+.select-field__hint {
+  font-family: var(--select-font-family);
+  font-size: var(--select-hint-size);
+  color: var(--select-hint-color);
+  line-height: var(--leading-snug);
+}
