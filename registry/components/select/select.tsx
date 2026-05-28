@@ -8,6 +8,7 @@
  *   size     — 'sm' | 'md' | 'lg'               (default: 'md')
  *   multiple — boolean  → renders listbox mode
  *   required — boolean  → adds * to label
+ *   disabled — boolean
  *
  * Usage:
  *   import './select.css'
@@ -29,6 +30,7 @@ export interface SelectProps
   hint?: string
   variant?: 'default' | 'error' | 'success'
   size?: 'sm' | 'md' | 'lg'
+  multiple?: boolean
 }
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
