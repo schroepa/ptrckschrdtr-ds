@@ -163,6 +163,33 @@
           "target": "src/components/ds/button/button.tsx"
         }
       ]
+    },
+
+    {
+      "name": "select",
+      "type": "registry:component",
+      "title": "Select",
+      "description": "Native select dropdown with label, hint text, and validation states. Variants: default, error, success. Sizes: sm, md, lg. Supports multiple (listbox) mode, required, disabled. Available as select.astro and select.tsx (React).",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-semantic"
+      ],
+      "files": [
+        {
+          "path": "registry/components/select/select.css",
+          "type": "registry:style",
+          "target": "src/components/ds/select/select.css"
+        },
+        {
+          "path": "registry/components/select/select.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/select/select.astro"
+        },
+        {
+          "path": "registry/components/select/select.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/select/select.tsx"
+        }
+      ]
     }
 
   ]
