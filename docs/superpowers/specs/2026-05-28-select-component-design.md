@@ -66,7 +66,8 @@ Modifier classes on `.select-field`:
 
 /* Text */
 --select-text:                var(--color-text-default)
---select-text-placeholder:    var(--color-text-subtle)
+/* --select-text-placeholder intentionally omitted: native <select> has no
+   cross-browser mechanism to target a "placeholder" option's display colour */
 --select-text-disabled:       var(--color-text-disabled)
 
 /* Label */

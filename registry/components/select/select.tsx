@@ -9,6 +9,8 @@
  *   multiple — boolean  → renders listbox mode
  *   required — boolean  → adds * to label
  *   disabled — boolean
+ *   name     — string
+ *   id       — string  → auto-generated if not provided
  *
  * Usage:
  *   import './select.css'
