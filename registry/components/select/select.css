@@ -29,7 +29,6 @@
   --select-bg-disabled:      var(--color-bg-muted);
 
   --select-text:             var(--color-text-default);
-  --select-text-placeholder: var(--color-text-subtle);
   --select-text-disabled:    var(--color-text-disabled);
 
   --select-label-size:       var(--text-sm);
@@ -183,7 +182,7 @@
 /* ── Multiple Mode ─────────────────────────────────────── */
 /* Listbox mode: no chevron, symmetric padding */
 .select-field--multiple .select-field__select {
-  padding-right: var(--select-padding-x-md);
+  padding-right: var(--select-padding-x-md); /* default size: md — overridden by size+multiple combinator rules below */
   cursor: auto;
 }
 
@@ -199,7 +198,7 @@
   display: none;
 }
 
-/* ── Hint / Helper Text ────────────────────────────────– */
+/* ── Hint / Helper Text ────────────────────────────────── */
 .select-field__hint {
   font-family: var(--select-font-family);
   font-size: var(--select-hint-size);
