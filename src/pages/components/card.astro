@@ -1,0 +1,58 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Card from '../../../registry/components/card/card.astro'
+---
+
+<DocsLayout title="Card" currentPath="/components/card">
+  <h1 class="docs-page-title">Card</h1>
+  <p class="docs-page-description">Flexible container with header/body/footer/media slots. 4 variants.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/card.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/card.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Variants</h2>
+    <div class="docs-preview" style="align-items: flex-start; flex-wrap: wrap;">
+      <div style="width: 180px;">
+        <Card title="Default" description="default variant">Body</Card>
+      </div>
+      <div style="width: 180px;">
+        <Card variant="outlined" title="Outlined" description="outlined variant">Body</Card>
+      </div>
+      <div style="width: 180px;">
+        <Card variant="elevated" title="Elevated" description="elevated variant">Body</Card>
+      </div>
+      <div style="width: 180px;">
+        <Card variant="ghost" title="Ghost" description="ghost variant">Body</Card>
+      </div>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Sizes</h2>
+    <div class="docs-preview" style="align-items: flex-start;">
+      <div style="width: 160px;"><Card title="Small" size="sm">Small padding</Card></div>
+      <div style="width: 160px;"><Card title="Medium" size="md">Medium padding</Card></div>
+      <div style="width: 160px;"><Card title="Large" size="lg">Large padding</Card></div>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">With Footer</h2>
+    <div class="docs-preview">
+      <div style="width: 280px;">
+        <Card title="Card with footer" description="Has a footer slot.">
+          Body content here.
+          <Fragment slot="footer">
+            <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Footer content</span>
+          </Fragment>
+        </Card>
+      </div>
+    </div>
+  </div>
+</DocsLayout>
