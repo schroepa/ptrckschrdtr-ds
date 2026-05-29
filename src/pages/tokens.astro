@@ -1,0 +1,87 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro'
+
+const colorGroups = [
+  {
+    title: 'Brand',
+    tokens: ['--color-brand-primary', '--color-brand-primary-hover', '--color-brand-primary-active', '--color-brand-primary-subtle', '--color-brand-secondary', '--color-brand-secondary-hover'],
+  },
+  {
+    title: 'Surface & Background',
+    tokens: ['--color-bg-default', '--color-bg-subtle', '--color-bg-muted', '--color-bg-emphasis', '--color-surface-default', '--color-surface-raised', '--color-surface-overlay'],
+  },
+  {
+    title: 'Text',
+    tokens: ['--color-text-default', '--color-text-muted', '--color-text-subtle', '--color-text-disabled', '--color-text-inverse'],
+  },
+  {
+    title: 'Border',
+    tokens: ['--color-border-default', '--color-border-strong', '--color-border-subtle', '--color-border-focus'],
+  },
+  {
+    title: 'Status',
+    tokens: ['--color-status-success', '--color-status-warning', '--color-status-error', '--color-status-info'],
+  },
+]
+
+const spacingTokens = ['--space-1','--space-2','--space-3','--space-4','--space-5','--space-6','--space-8','--space-10','--space-12','--space-16','--space-20','--space-24']
+const radiusTokens  = ['--radius-none','--radius-sm','--radius-md','--radius-lg','--radius-xl','--radius-2xl','--radius-full']
+const textTokens    = ['--text-xs','--text-sm','--text-md','--text-lg','--text-xl','--text-2xl','--text-3xl','--text-4xl','--text-5xl']
+---
+
+<DocsLayout title="Tokens" currentPath="/tokens">
+  <h1 class="docs-page-title">Design Tokens</h1>
+  <p class="docs-page-description">All semantic tokens. Brands override the slots in their theme.css.</p>
+
+  {colorGroups.map(group => (
+    <div class="docs-section">
+      <h2 class="docs-section__title">Color — {group.title}</h2>
+      <div class="token-grid">
+        {group.tokens.map(token => (
+          <div class="token-swatch">
+            <div class="token-swatch__color" style={`background-color: var(${token})`}></div>
+            <div class="token-swatch__info">
+              <div class="token-swatch__name">{token}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Spacing</h2>
+    <div class="token-spacing">
+      {spacingTokens.map(token => (
+        <div class="token-spacing__item">
+          <div class="token-spacing__bar" style={`width: var(${token})`}></div>
+          <span class="token-spacing__label">{token}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Radius</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-4);">
+      {radiusTokens.map(token => (
+        <div style="text-align: center;">
+          <div style={`width: 48px; height: 48px; background: var(--color-brand-primary); border-radius: var(${token}); margin-bottom: var(--space-2);`}></div>
+          <div style="font-size: var(--text-xs); color: var(--color-text-muted); font-family: var(--font-mono);">{token.replace('--radius-', '')}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Typography</h2>
+    <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+      {textTokens.map(token => (
+        <div style="display: flex; align-items: baseline; gap: var(--space-4);">
+          <span style={`font-size: var(${token}); color: var(--color-text-default); font-family: var(--font-sans); min-width: 40px;`}>Aa</span>
+          <span style="font-size: var(--text-xs); color: var(--color-text-muted); font-family: var(--font-mono);">{token}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</DocsLayout>
