@@ -1,0 +1,64 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Badge from '../../../registry/components/badge/badge.astro'
+---
+
+<DocsLayout title="Badge" currentPath="/components/badge">
+  <h1 class="docs-page-title">Badge</h1>
+  <p class="docs-page-description">Inline label for status, categories, or metadata. 7 variants, 3 styles.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/badge.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/badge.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Solid (default)</h2>
+    <div class="docs-preview">
+      <Badge variant="default">Default</Badge>
+      <Badge variant="primary">Primary</Badge>
+      <Badge variant="secondary">Secondary</Badge>
+      <Badge variant="success">Success</Badge>
+      <Badge variant="warning">Warning</Badge>
+      <Badge variant="error">Error</Badge>
+      <Badge variant="info">Info</Badge>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Subtle</h2>
+    <div class="docs-preview">
+      <Badge variant="default" style="subtle">Default</Badge>
+      <Badge variant="primary" style="subtle">Primary</Badge>
+      <Badge variant="secondary" style="subtle">Secondary</Badge>
+      <Badge variant="success" style="subtle">Success</Badge>
+      <Badge variant="warning" style="subtle">Warning</Badge>
+      <Badge variant="error" style="subtle">Error</Badge>
+      <Badge variant="info" style="subtle">Info</Badge>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Outline</h2>
+    <div class="docs-preview">
+      <Badge variant="default" style="outline">Default</Badge>
+      <Badge variant="primary" style="outline">Primary</Badge>
+      <Badge variant="success" style="outline">Success</Badge>
+      <Badge variant="error" style="outline">Error</Badge>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Sizes & Dot</h2>
+    <div class="docs-preview">
+      <Badge variant="primary" size="sm">Small</Badge>
+      <Badge variant="primary">Medium</Badge>
+      <Badge variant="primary" size="lg">Large</Badge>
+      <Badge variant="success" dot>With dot</Badge>
+      <Badge variant="error" style="subtle" dot>Error dot</Badge>
+    </div>
+  </div>
+</DocsLayout>
