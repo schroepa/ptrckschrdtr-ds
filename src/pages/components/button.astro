@@ -1,0 +1,53 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Button from '../../../registry/components/button/button.astro'
+---
+
+<DocsLayout title="Button" currentPath="/components/button">
+  <h1 class="docs-page-title">Button</h1>
+  <p class="docs-page-description">Base button component. 4 variants, 3 sizes, loading state, icon-only mode.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/button.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/button.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Variants</h2>
+    <div class="docs-preview">
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="danger">Danger</Button>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Sizes</h2>
+    <div class="docs-preview">
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">States</h2>
+    <div class="docs-preview">
+      <Button disabled>Disabled</Button>
+      <Button loading>Loading</Button>
+      <Button full>Full Width</Button>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">As Link</h2>
+    <div class="docs-preview">
+      <Button href="#" variant="primary">Link button</Button>
+      <Button href="#" variant="ghost">Ghost link</Button>
+    </div>
+  </div>
+</DocsLayout>
