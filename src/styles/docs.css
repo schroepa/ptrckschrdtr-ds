@@ -1,3 +1,8 @@
+/* ── Layout Variable ────────────────────────────────────── */
+:root {
+  --docs-header-height: 57px;
+}
+
 /* ── Docs Shell ────────────────────────────────────────── */
 .docs-layout {
   display: grid;
@@ -38,8 +43,8 @@
   border-right: 1px solid var(--color-border-subtle);
   background-color: var(--color-bg-subtle);
   position: sticky;
-  top: 57px;
-  height: calc(100vh - 57px);
+  top: var(--docs-header-height);
+  height: calc(100vh - var(--docs-header-height));
   overflow-y: auto;
   padding: var(--space-4) 0;
 }
@@ -70,6 +75,13 @@
 .docs-nav__link:hover {
   color: var(--color-text-default);
   background-color: var(--color-bg-muted);
+}
+
+.docs-nav__link:focus-visible {
+  color: var(--color-text-default);
+  background-color: var(--color-bg-muted);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: -2px;
 }
 
 .docs-nav__link--active {
@@ -171,6 +183,13 @@
   border-color: var(--color-border-strong);
 }
 
+.docs-install__copy:focus-visible {
+  color: var(--color-text-default);
+  border-color: var(--color-border-focus);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
 /* ── Component Grid (home page) ────────────────────────── */
 .docs-component-grid {
   display: grid;
@@ -191,6 +210,13 @@
 .docs-component-card:hover {
   border-color: var(--color-border-strong);
   box-shadow: var(--shadow-sm);
+}
+
+.docs-component-card:focus-visible {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
 }
 
 .docs-component-card__name {
