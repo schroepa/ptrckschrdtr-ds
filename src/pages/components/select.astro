@@ -1,0 +1,78 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Select from '../../../registry/components/select/select.astro'
+---
+
+<DocsLayout title="Select" currentPath="/components/select">
+  <h1 class="docs-page-title">Select</h1>
+  <p class="docs-page-description">Native select dropdown with label, hint text, and validation states.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/select.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/select.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Default</h2>
+    <div class="docs-preview docs-preview--column">
+      <Select label="Country" hint="Select your country.">
+        <option value="">Choose…</option>
+        <option value="de">Germany</option>
+        <option value="at">Austria</option>
+        <option value="ch">Switzerland</option>
+      </Select>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Variants</h2>
+    <div class="docs-preview docs-preview--column">
+      <Select label="Valid selection" variant="success" hint="Good choice!">
+        <option value="de" selected>Germany</option>
+      </Select>
+      <Select label="Required field" variant="error" hint="Please select an option.">
+        <option value="">Choose…</option>
+        <option value="de">Germany</option>
+      </Select>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Sizes</h2>
+    <div class="docs-preview docs-preview--column">
+      <Select label="Small" size="sm">
+        <option>Option A</option><option>Option B</option>
+      </Select>
+      <Select label="Medium">
+        <option>Option A</option><option>Option B</option>
+      </Select>
+      <Select label="Large" size="lg">
+        <option>Option A</option><option>Option B</option>
+      </Select>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Multiple Mode</h2>
+    <div class="docs-preview docs-preview--column">
+      <Select label="Tags" multiple hint="Hold Ctrl / Cmd to select multiple.">
+        <option value="design">Design</option>
+        <option value="dev">Development</option>
+        <option value="pm">Product</option>
+        <option value="data">Data</option>
+      </Select>
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">States</h2>
+    <div class="docs-preview docs-preview--column">
+      <Select label="Disabled" disabled hint="This field is disabled.">
+        <option>Option A</option>
+      </Select>
+    </div>
+  </div>
+</DocsLayout>
