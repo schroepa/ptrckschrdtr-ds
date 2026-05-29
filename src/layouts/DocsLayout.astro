@@ -1,0 +1,84 @@
+---
+import '../../registry/tokens/base/primitives.css'
+import '../../registry/tokens/base/reset.css'
+import '../../registry/tokens/semantic/semantic.css'
+import '../../registry/tokens/themes/example/theme.css'
+import '../styles/docs.css'
+
+interface Props {
+  title: string
+  description?: string
+  currentPath?: string
+}
+
+const {
+  title,
+  description = 'ptrckschrdtr-ds — Personal Design System Registry',
+  currentPath = '',
+} = Astro.props
+
+const navItems = [
+  { label: 'Home',   href: '/' },
+  { label: 'Tokens', href: '/tokens' },
+]
+
+const componentItems = [
+  { label: 'Button', href: '/components/button' },
+  { label: 'Input',  href: '/components/input' },
+  { label: 'Card',   href: '/components/card' },
+  { label: 'Badge',  href: '/components/badge' },
+  { label: 'Select', href: '/components/select' },
+]
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — ptrckschrdtr-ds</title>
+    <meta name="description" content={description} />
+    <script is:inline>
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+  </head>
+  <body>
+    <div class="docs-layout">
+
+      <header class="docs-header">
+        <a href="/" class="docs-header__logo">ptrckschrdtr-ds</a>
+      </header>
+
+      <nav class="docs-sidebar" aria-label="Documentation navigation">
+        <div class="docs-nav__group">
+          {navItems.map(item => (
+            <a
+              href={item.href}
+              class:list={['docs-nav__link', currentPath === item.href && 'docs-nav__link--active']}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+        <div class="docs-nav__group">
+          <span class="docs-nav__label">Components</span>
+          {componentItems.map(item => (
+            <a
+              href={item.href}
+              class:list={['docs-nav__link', currentPath === item.href && 'docs-nav__link--active']}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      <main class="docs-content">
+        <slot />
+      </main>
+
+    </div>
+  </body>
+</html>
