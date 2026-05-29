@@ -1,3 +1,39 @@
 ---
+import DocsLayout from '../layouts/DocsLayout.astro'
 ---
-<html><body><h1>ptrckschrdtr-ds</h1></body></html>
+
+<DocsLayout title="Home" currentPath="/">
+  <h1 class="docs-page-title">ptrckschrdtr-ds</h1>
+  <p class="docs-page-description">
+    Personal design system registry — CSS-first, framework-agnostic, shadcn-compatible.
+    Install any component directly into your project; no npm package, no lock-in.
+  </p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/button.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/button.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >
+      Copy
+    </button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Components</h2>
+    <div class="docs-component-grid">
+      {[
+        { name: 'Button', desc: '4 variants, 3 sizes, loading, icon-only',       href: '/components/button' },
+        { name: 'Input',  desc: 'Label, hint, error/success states, textarea',    href: '/components/input'  },
+        { name: 'Card',   desc: 'Header/body/footer/media slots, 4 variants',     href: '/components/card'   },
+        { name: 'Badge',  desc: '7 variants, 3 styles (solid/subtle/outline)',    href: '/components/badge'  },
+        { name: 'Select', desc: 'Native select, variants, multiple mode',         href: '/components/select' },
+      ].map(c => (
+        <a href={c.href} class="docs-component-card">
+          <div class="docs-component-card__name">{c.name}</div>
+          <div class="docs-component-card__desc">{c.desc}</div>
+        </a>
+      ))}
+    </div>
+  </div>
+</DocsLayout>
