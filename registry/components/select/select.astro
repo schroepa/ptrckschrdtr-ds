@@ -75,7 +75,7 @@ const wrapperClasses = [
       id={id}
       name={name}
       class="select-field__select"
-      multiple={multiple}
+      multiple={multiple ? '' : undefined}
       required={required}
       disabled={disabled}
       {...rest}
