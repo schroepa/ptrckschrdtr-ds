@@ -4,9 +4,15 @@
   "description": "Personal design system registry by @ptrckschrdtr. Multi-brand, framework-agnostic, built on shadcn registry.",
   "homepage": "https://ds.ptrckschrdtr.de",
   "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "registry:build": "shadcn build",
     "registry:build:watch": "shadcn build --watch",
-    "dev": "your-framework dev"
+    "build:all": "npm run registry:build && npm run build"
+  },
+  "dependencies": {
+    "astro": "latest"
   },
   "devDependencies": {
     "shadcn": "latest"
