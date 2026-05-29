@@ -1,0 +1,51 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Input from '../../../registry/components/input/input.astro'
+---
+
+<DocsLayout title="Input" currentPath="/components/input">
+  <h1 class="docs-page-title">Input</h1>
+  <p class="docs-page-description">Form input field with label, hint text, and validation states.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/input.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/input.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Default</h2>
+    <div class="docs-preview docs-preview--column">
+      <Input label="Email" placeholder="you@example.com" hint="We'll never share your email." />
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Variants</h2>
+    <div class="docs-preview docs-preview--column">
+      <Input label="Username" variant="error" value="taken_name" hint="This username is already taken." />
+      <Input label="Email" variant="success" value="you@example.com" hint="Looks good!" />
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Sizes</h2>
+    <div class="docs-preview docs-preview--column">
+      <Input label="Small" size="sm" placeholder="Small input" />
+      <Input label="Medium" size="md" placeholder="Medium input" />
+      <Input label="Large" size="lg" placeholder="Large input" />
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">States</h2>
+    <div class="docs-preview docs-preview--column">
+      <Input label="Required field" required placeholder="Required" />
+      <Input label="Disabled" disabled value="Disabled value" />
+      <Input label="Readonly" readonly value="Readonly value" />
+      <Input label="Message" textarea placeholder="Write something…" hint="Max 500 characters." />
+    </div>
+  </div>
+</DocsLayout>
