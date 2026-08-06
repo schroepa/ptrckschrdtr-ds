@@ -1,0 +1,110 @@
+/**
+ * ptrckschrdtr-ds — Theme Tokens
+ * ─────────────────────────────────
+ * Maps Global tokens to meaning. Light is the default mode (:root);
+ * Dark is a distinct, hand-tuned second mode, not an inversion — set
+ * [data-theme="dark"] on <html> (or any ancestor) to activate it.
+ *
+ * Tokens commented "extension" below do not exist in the Figma GTC
+ * file. They exist so Button/Input/Card/Badge/Select keep working
+ * without a brand-color concept — see
+ * docs/superpowers/specs/2026-08-06-figma-gtc-sync-design.md.
+ *
+ * Sections:
+ *   1. Surface   2. Text   3. Border   4. Button (Primary)
+ *   5. Icon      6. Status 7. Motion (convenience alias)
+ */
+
+:root {
+  /* ── 1. Surface ───────────────────────────────────────────── */
+  --theme-surface-page:    var(--global-color-base-12);
+  --theme-surface-raised:  var(--global-color-base-12);
+  --theme-surface-overlay: var(--global-color-base-10);
+  --theme-surface-subtle:  var(--global-color-base-11); /* extension */
+  --theme-surface-muted:   var(--global-color-base-9);  /* extension */
+
+  /* ── 2. Text ──────────────────────────────────────────────── */
+  --theme-text-default:    var(--global-color-base-1);
+  --theme-text-muted:      var(--global-color-base-4);
+  --theme-text-subtle:     var(--global-color-base-6);  /* extension */
+  --theme-text-on-primary: var(--global-color-base-12);
+
+  /* ── 3. Border ────────────────────────────────────────────── */
+  --theme-border-default:    var(--global-color-base-8);
+  --theme-border-input:      var(--global-color-base-8);
+  --theme-border-subtle:     var(--global-color-base-9); /* extension */
+  --theme-border-focus-ring: var(--global-color-base-7);
+
+  /* ── 4. Button (Primary) ─────────────────────────────────── */
+  --theme-button-primary-bg:     var(--global-color-base-2);
+  --theme-button-primary-text:   var(--global-color-base-12);
+  --theme-button-primary-hover:  var(--global-color-base-3);
+  --theme-button-primary-active: var(--global-color-base-4);
+
+  /* ── 5. Icon ──────────────────────────────────────────────── */
+  --theme-icon-default:    var(--theme-text-default);
+  --theme-icon-muted:      var(--theme-text-muted);
+  --theme-icon-on-primary: var(--theme-text-on-primary);
+
+  /* ── 6. Status ────────────────────────────────────────────── */
+  --theme-status-destructive:           var(--global-color-accent-vivid);
+  --theme-status-destructive-subtle-bg: var(--global-color-accent-a-subtle);
+  --theme-status-destructive-text:      var(--global-color-base-12); /* extension */
+
+  --theme-status-success:           var(--global-color-success-vivid);
+  --theme-status-success-subtle-bg: var(--global-color-success-a-subtle);
+  --theme-status-success-text:      var(--global-color-base-12); /* extension */
+
+  --theme-status-warning:           var(--global-color-warning-vivid); /* extension */
+  --theme-status-warning-subtle-bg: var(--global-color-warning-a-subtle); /* extension */
+  --theme-status-warning-text:      var(--global-color-base-1); /* extension — amber bg needs dark text */
+
+  --theme-status-info:           var(--global-color-info-vivid); /* extension */
+  --theme-status-info-subtle-bg: var(--global-color-info-a-subtle); /* extension */
+  --theme-status-info-text:      var(--global-color-base-12); /* extension */
+
+  /* ── 7. Motion (convenience alias, extension) ────────────── */
+  --theme-transition-default: var(--global-motion-duration-base) var(--global-motion-easing-in-out);
+}
+
+[data-theme="dark"] {
+  /* ── 1. Surface ───────────────────────────────────────────── */
+  --theme-surface-page:    var(--global-color-base-0);
+  --theme-surface-raised:  var(--global-color-base-2);
+  --theme-surface-overlay: var(--global-color-base-3);
+  --theme-surface-subtle:  var(--global-color-base-1);
+  --theme-surface-muted:   var(--global-color-base-4);
+
+  /* ── 2. Text ──────────────────────────────────────────────── */
+  --theme-text-default:    var(--global-color-base-11);
+  --theme-text-muted:      var(--global-color-base-6);
+  --theme-text-subtle:     var(--global-color-base-5);
+  --theme-text-on-primary: var(--global-color-base-2);
+
+  /* ── 3. Border ────────────────────────────────────────────── */
+  --theme-border-default:    var(--global-color-overlay-white-a10);
+  --theme-border-input:      var(--global-color-overlay-white-a15);
+  --theme-border-subtle:     var(--global-color-overlay-white-a10);
+  --theme-border-focus-ring: var(--global-color-base-5);
+
+  /* ── 4. Button (Primary) ─────────────────────────────────── */
+  --theme-button-primary-bg:     var(--global-color-base-9);
+  --theme-button-primary-text:   var(--global-color-base-2);
+  --theme-button-primary-hover:  var(--global-color-base-8);
+  --theme-button-primary-active: var(--global-color-base-7);
+
+  /* ── 6. Status ────────────────────────────────────────────── */
+  --theme-status-destructive:           var(--global-color-accent-bright);
+  --theme-status-destructive-subtle-bg: var(--global-color-accent-a-subtle);
+
+  --theme-status-success:           var(--global-color-success-bright);
+  --theme-status-success-subtle-bg: var(--global-color-success-a-subtle);
+
+  --theme-status-warning:           var(--global-color-warning-bright);
+  --theme-status-warning-subtle-bg: var(--global-color-warning-a-subtle);
+
+  --theme-status-info:           var(--global-color-info-bright);
+  --theme-status-info-subtle-bg: var(--global-color-info-a-subtle);
+
+  /* icon-*, *-text, and transition-default are mode-independent — inherited from :root */
+}
