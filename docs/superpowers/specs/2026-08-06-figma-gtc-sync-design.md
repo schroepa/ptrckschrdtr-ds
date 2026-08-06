@@ -155,6 +155,23 @@ inlines its own SVG rather than accepting one).
 - Existing five component docs pages — update any token references that
   changed name.
 
+## Amendment: extending the Theme tier for existing components
+
+While planning the token rename, it became clear GTC's Theme tier is
+narrower than what Button/Input/Card/Badge/Select currently consume (no
+`bg-muted/subtle`, no `text-subtle`, no `border-subtle`, no
+`status.warning/info`, no brand-hue replacement for Button's
+`secondary`/`ghost` or Badge's `primary`/`secondary`/`warning`/`info`
+variants). Decision: **extend the Theme (and, minimally, Global) tier**
+with clearly-marked non-Figma tokens derived from the same neutral ramp
+and alpha pattern GTC already establishes, rather than dropping the
+affected variants. Button's `secondary` becomes a neutral outline style
+(no brand hue needed), Badge's `primary`/`secondary` map onto
+`theme.button.primary`/a muted neutral respectively, and `warning`/`info`
+get their own Global color pair (vivid/bright + subtle alpha, matching the
+`accent`/`success` pattern) since GTC doesn't model them. See the
+implementation plan for the exact token list and values.
+
 ## Out of scope for this phase
 
 - Reconciling Button/Input/Card/Badge/Select visual details against their
