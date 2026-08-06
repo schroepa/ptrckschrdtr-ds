@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Switch from '../../../registry/components/switch/switch.astro'
 ---
 
 <DocsLayout title="Switch" currentPath="/components/switch">
-  <h1 class="docs-page-title">Switch</h1>
-  <p class="docs-page-description">An on/off toggle control with an optional label.</p>
+  <PageHeader
+    name="Switch"
+    description="An on/off toggle control with an optional label."
+    version="v1.0.0"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/switch.json</code>
@@ -32,4 +37,9 @@ import Switch from '../../../registry/components/switch/switch.astro'
       <Switch label="Already on" checked />
     </div>
   </div>
+
+  <DoDontBlock
+    do="Use for settings that take effect immediately, without a separate 'Save' step."
+    dont="Don't use inside a form that still needs an explicit submit — a Checkbox sets clearer expectations there."
+  />
 </DocsLayout>

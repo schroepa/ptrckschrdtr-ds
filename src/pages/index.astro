@@ -1,13 +1,14 @@
 ---
 import DocsLayout from '../layouts/DocsLayout.astro'
+import PageHeader from '../components/docs/PageHeader.astro'
 ---
 
 <DocsLayout title="Home" currentPath="/">
-  <h1 class="docs-page-title">ptrckschrdtr-ds</h1>
-  <p class="docs-page-description">
-    Personal design system registry — CSS-first, framework-agnostic, shadcn-compatible.
-    Install any component directly into your project; no npm package, no lock-in.
-  </p>
+  <PageHeader
+    name="ptrckschrdtr-ds"
+    description="Personal design system registry — CSS-first, framework-agnostic, shadcn-compatible. Install any component directly into your project; no npm package, no lock-in."
+    version="v1.0.0"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/button.json</code>

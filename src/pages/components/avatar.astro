@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Avatar from '../../../registry/components/avatar/avatar.astro'
 ---
 
 <DocsLayout title="Avatar" currentPath="/components/avatar">
-  <h1 class="docs-page-title">Avatar</h1>
-  <p class="docs-page-description">Initials, icon, or image representation of a user. 2 sizes.</p>
+  <PageHeader
+    name="Avatar"
+    description="Initials, icon, or image representation of a user. 2 sizes."
+    version="v1.0.1"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/avatar.json</code>
@@ -30,4 +35,9 @@ import Avatar from '../../../registry/components/avatar/avatar.astro'
       <Avatar type="initials" initials="PS" />
     </div>
   </div>
+
+  <DoDontBlock
+    do="Fall back to `type='icon'` or initials when no photo is available — never leave the slot empty."
+    dont="Don't rely on Avatar alone to identify a person — always pair it with a visible name nearby."
+  />
 </DocsLayout>

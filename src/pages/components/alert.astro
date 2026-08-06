@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Alert from '../../../registry/components/alert/alert.astro'
 ---
 
 <DocsLayout title="Alert" currentPath="/components/alert">
-  <h1 class="docs-page-title">Alert</h1>
-  <p class="docs-page-description">A callout for important information. Variant-bound icon.</p>
+  <PageHeader
+    name="Alert"
+    description="A callout for important information. Variant-bound icon."
+    version="v1.2.1"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/alert.json</code>
@@ -22,4 +27,9 @@ import Alert from '../../../registry/components/alert/alert.astro'
       <Alert variant="destructive" title="Something went wrong" description="Your changes could not be saved." />
     </div>
   </div>
+
+  <DoDontBlock
+    do="Use `destructive` only for errors that block the user or lose data — not for routine warnings."
+    dont="Don't use Alert for transient success messages — reach for a toast/snackbar instead, Alert is for content that should stay visible."
+  />
 </DocsLayout>

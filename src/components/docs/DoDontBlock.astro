@@ -1,0 +1,42 @@
+---
+/**
+ * ptrckschrdtr-ds — Docs Site: Do/Dont Block
+ * ─────────────────────────────────────────
+ * Mirrors Figma's "Do Dont Block" shared component — a green Do / red
+ * Don't guideline pair. Docs-site chrome only — not part of the
+ * distributed registry.
+ *
+ * Props:
+ *   do   — string, a short "do this" guideline
+ *   dont — string, a short "don't do this" guideline
+ */
+
+interface Props {
+  do: string
+  dont: string
+}
+
+const { do: doText, dont: dontText } = Astro.props
+---
+
+<div class="docs-do-dont">
+  <div class="docs-do-dont__panel docs-do-dont__panel--do">
+    <div class="docs-do-dont__heading">
+      <svg class="docs-do-dont__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+        <path d="m9 12 2 2 4-4" />
+      </svg>
+      <span>Do</span>
+    </div>
+    <p class="docs-do-dont__text">{doText}</p>
+  </div>
+  <div class="docs-do-dont__panel docs-do-dont__panel--dont">
+    <div class="docs-do-dont__heading">
+      <svg class="docs-do-dont__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18" /><path d="m6 6 12 12" />
+      </svg>
+      <span>Don't</span>
+    </div>
+    <p class="docs-do-dont__text">{dontText}</p>
+  </div>
+</div>

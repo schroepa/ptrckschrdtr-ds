@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Card from '../../../registry/components/card/card.astro'
 ---
 
 <DocsLayout title="Card" currentPath="/components/card">
-  <h1 class="docs-page-title">Card</h1>
-  <p class="docs-page-description">Flexible container with header/body/footer/media slots. 4 variants.</p>
+  <PageHeader
+    name="Card"
+    description="Flexible container with header/body/footer/media slots. 4 variants."
+    version="v1.1.1"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/card.json</code>
@@ -55,4 +60,9 @@ import Card from '../../../registry/components/card/card.astro'
       </div>
     </div>
   </div>
+
+  <DoDontBlock
+    do="Use `elevated` sparingly — one focal card per view reads as important; several elevated cards fight each other."
+    dont="Don't nest interactive cards inside `card--interactive` — overlapping click targets confuse mouse and keyboard users alike."
+  />
 </DocsLayout>

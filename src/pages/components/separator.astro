@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Separator from '../../../registry/components/separator/separator.astro'
 ---
 
 <DocsLayout title="Separator" currentPath="/components/separator">
-  <h1 class="docs-page-title">Separator</h1>
-  <p class="docs-page-description">A horizontal rule for dividing content.</p>
+  <PageHeader
+    name="Separator"
+    description="A horizontal rule for dividing content."
+    version="v1.0.0"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/separator.json</code>
@@ -23,4 +28,9 @@ import Separator from '../../../registry/components/separator/separator.astro'
       <p>Content below</p>
     </div>
   </div>
+
+  <DoDontBlock
+    do="Use to divide unrelated content within the same visual section."
+    dont="Don't stack multiple separators in a row — if you need that much division, the layout needs a real section break instead."
+  />
 </DocsLayout>

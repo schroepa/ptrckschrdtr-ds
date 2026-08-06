@@ -1,5 +1,6 @@
 ---
 import DocsLayout from '../layouts/DocsLayout.astro'
+import PageHeader from '../components/docs/PageHeader.astro'
 
 const colorGroups = [
   {
@@ -30,8 +31,11 @@ const textTokens    = ['--global-font-size-xs', '--global-font-size-sm', '--glob
 ---
 
 <DocsLayout title="Tokens" currentPath="/tokens">
-  <h1 class="docs-page-title">Design Tokens</h1>
-  <p class="docs-page-description">Global → Theme → Component, sourced from the Figma "ptrckschrdtr GTC DS" file. Light is the default mode.</p>
+  <PageHeader
+    name="Design Tokens"
+    description={'Global → Theme → Component, sourced from the Figma "ptrckschrdtr GTC DS" file. Light is the default mode.'}
+    version="v1.0.0"
+  />
 
   {colorGroups.map(group => (
     <div class="docs-section">

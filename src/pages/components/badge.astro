@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Badge from '../../../registry/components/badge/badge.astro'
 ---
 
 <DocsLayout title="Badge" currentPath="/components/badge">
-  <h1 class="docs-page-title">Badge</h1>
-  <p class="docs-page-description">Inline label for status, categories, or metadata. 7 variants, 3 styles.</p>
+  <PageHeader
+    name="Badge"
+    description="Inline label for status, categories, or metadata. 7 variants, 3 styles."
+    version="v1.1.0"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/badge.json</code>
@@ -61,4 +66,9 @@ import Badge from '../../../registry/components/badge/badge.astro'
       <Badge variant="error" style="subtle" dot>Error dot</Badge>
     </div>
   </div>
+
+  <DoDontBlock
+    do="Use for short status words (max. 2 words)."
+    dont="Don't use as a clickable element — badges are informational only, not buttons."
+  />
 </DocsLayout>

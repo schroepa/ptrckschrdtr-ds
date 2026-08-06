@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Button from '../../../registry/components/button/button.astro'
 ---
 
 <DocsLayout title="Button" currentPath="/components/button">
-  <h1 class="docs-page-title">Button</h1>
-  <p class="docs-page-description">Base button component. 4 variants, 3 sizes, loading state, icon-only mode.</p>
+  <PageHeader
+    name="Button"
+    description="Base button component. 4 variants, 3 sizes, loading state, icon-only mode."
+    version="v1.4.0"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/button.json</code>
@@ -50,4 +55,9 @@ import Button from '../../../registry/components/button/button.astro'
       <Button href="#" variant="ghost">Ghost link</Button>
     </div>
   </div>
+
+  <DoDontBlock
+    do="Use `primary` for the one main action per view; reserve `secondary`/`ghost` for supporting actions."
+    dont="Don't use `danger` for anything except destructive, hard-to-undo actions — save the red for real risk."
+  />
 </DocsLayout>

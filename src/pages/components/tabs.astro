@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Tabs from '../../../registry/components/tabs/tabs.astro'
 ---
 
 <DocsLayout title="Tabs" currentPath="/components/tabs">
-  <h1 class="docs-page-title">Tabs</h1>
-  <p class="docs-page-description">Switch between panels of content.</p>
+  <PageHeader
+    name="Tabs"
+    description="Switch between panels of content."
+    version="v1.1.0"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/tabs.json</code>
@@ -23,4 +28,9 @@ import Tabs from '../../../registry/components/tabs/tabs.astro'
       <div class="tabs-panel" data-tab-panel="settings" hidden>Settings panel content.</div>
     </Tabs>
   </div>
+
+  <DoDontBlock
+    do="Use for 2-7 peer views of the same kind of content, all relevant to the same task."
+    dont="Don't hide a required form step in a tab — users often miss content in a tab that isn't active."
+  />
 </DocsLayout>

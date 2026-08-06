@@ -1,0 +1,39 @@
+---
+/**
+ * ptrckschrdtr-ds — Docs Site: Page Header
+ * ─────────────────────────────────────────
+ * Mirrors Figma's "Page Header" shared component (kicker + version badge,
+ * display-font title, description, rule). Docs-site chrome only — not
+ * part of the distributed registry.
+ *
+ * Props:
+ *   name        — string, the page/component title
+ *   description — string
+ *   version     — string, default 'v1.0.0'
+ *   kicker      — string, default 'PTRCKSCHRDTR GTC DS'
+ */
+
+interface Props {
+  name: string
+  description: string
+  version?: string
+  kicker?: string
+}
+
+const {
+  name,
+  description,
+  version = 'v1.0.0',
+  kicker = 'PTRCKSCHRDTR GTC DS',
+} = Astro.props
+---
+
+<div class="docs-page-header">
+  <div class="docs-page-header__meta">
+    <span class="docs-page-header__kicker">{kicker}</span>
+    <span class="docs-page-header__badge">{version}</span>
+  </div>
+  <h1 class="docs-page-header__title">{name}</h1>
+  <p class="docs-page-header__description">{description}</p>
+  <div class="docs-page-header__rule"></div>
+</div>

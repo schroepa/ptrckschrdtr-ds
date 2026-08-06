@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Input from '../../../registry/components/input/input.astro'
 ---
 
 <DocsLayout title="Input" currentPath="/components/input">
-  <h1 class="docs-page-title">Input</h1>
-  <p class="docs-page-description">Form input field with label, hint text, and validation states.</p>
+  <PageHeader
+    name="Input"
+    description="Form input field with label, hint text, and validation states."
+    version="v1.4.0"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/input.json</code>
@@ -48,4 +53,9 @@ import Input from '../../../registry/components/input/input.astro'
       <Input label="Message" textarea placeholder="Write something…" hint="Max 500 characters." />
     </div>
   </div>
+
+  <DoDontBlock
+    do="Always pair with a visible label — placeholder text alone is not an accessible label."
+    dont="Don't rely on color alone for the error state — pair it with the hint text, screen readers don't see red."
+  />
 </DocsLayout>

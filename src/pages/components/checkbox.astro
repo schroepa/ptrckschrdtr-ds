@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Checkbox from '../../../registry/components/checkbox/checkbox.astro'
 ---
 
 <DocsLayout title="Checkbox" currentPath="/components/checkbox">
-  <h1 class="docs-page-title">Checkbox</h1>
-  <p class="docs-page-description">A single checkbox control with an optional label.</p>
+  <PageHeader
+    name="Checkbox"
+    description="A single checkbox control with an optional label."
+    version="v1.1.0"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/checkbox.json</code>
@@ -32,4 +37,9 @@ import Checkbox from '../../../registry/components/checkbox/checkbox.astro'
       <Checkbox label="Already checked" checked />
     </div>
   </div>
+
+  <DoDontBlock
+    do="Use for independent on/off choices, especially in groups where more than one can be selected."
+    dont="Don't use for a single option that takes an immediate action — that's a Switch or a Button, not a Checkbox."
+  />
 </DocsLayout>

@@ -1,11 +1,16 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import PageHeader from '../../components/docs/PageHeader.astro'
+import DoDontBlock from '../../components/docs/DoDontBlock.astro'
 import Select from '../../../registry/components/select/select.astro'
 ---
 
 <DocsLayout title="Select" currentPath="/components/select">
-  <h1 class="docs-page-title">Select</h1>
-  <p class="docs-page-description">Native select dropdown with label, hint text, and validation states.</p>
+  <PageHeader
+    name="Select"
+    description="Native select dropdown with label, hint text, and validation states."
+    version="v1.0.0"
+  />
 
   <div class="docs-install">
     <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/select.json</code>
@@ -75,4 +80,9 @@ import Select from '../../../registry/components/select/select.astro'
       </Select>
     </div>
   </div>
+
+  <DoDontBlock
+    do="Use for 5+ options where a native picker's platform affordances (search-by-typing, scroll) help."
+    dont="Don't use for 2-3 mutually exclusive options — a visible radio group is faster to scan and compare."
+  />
 </DocsLayout>
