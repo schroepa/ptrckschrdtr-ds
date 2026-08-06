@@ -308,6 +308,33 @@
           "target": "src/components/ds/alert/alert.tsx"
         }
       ]
+    },
+
+    {
+      "name": "tabs",
+      "type": "registry:component",
+      "title": "Tabs",
+      "description": "Switch between panels of content. Fixed trigger height so an optional leading icon never changes tab height.",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/components/tabs/tabs.css",
+          "type": "registry:style",
+          "target": "src/components/ds/tabs/tabs.css"
+        },
+        {
+          "path": "registry/components/tabs/tabs.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/tabs/tabs.astro"
+        },
+        {
+          "path": "registry/components/tabs/tabs.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/tabs/tabs.tsx"
+        }
+      ]
     }
 
   ]

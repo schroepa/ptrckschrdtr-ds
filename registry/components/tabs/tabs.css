@@ -1,0 +1,76 @@
+/**
+ * ptrckschrdtr-ds — Component: Tabs
+ * ────────────────────────────────────
+ * State: selected | not selected (per trigger)
+ *
+ * Anatomy:
+ *   .tabs-list          → trigger container
+ *   .tabs-trigger        → individual tab button
+ *   .tabs-trigger__icon  → optional leading icon
+ *   .tabs-panel          → content panel for one tab
+ *
+ * Trigger height is fixed (control-height.31) so an optional leading
+ * icon never changes tab height.
+ */
+
+/* ── Component Tokens ──────────────────────────────────── */
+:root {
+  --component-tabs-font-size:      var(--global-font-size-sm);
+  --component-tabs-list-radius:    var(--global-radius-7-2);
+  --component-tabs-trigger-radius: var(--global-radius-5-76);
+  --component-tabs-trigger-height: var(--global-control-height-31);
+  --component-tabs-icon-size:      var(--global-icon-size-xs);
+}
+
+/* ── List ──────────────────────────────────────────────── */
+.tabs-list {
+  display: inline-flex;
+  gap: var(--global-size-unit-1);
+  padding: var(--global-size-unit-1);
+  background-color: var(--theme-surface-muted);
+  border-radius: var(--component-tabs-list-radius);
+}
+
+/* ── Trigger ───────────────────────────────────────────── */
+.tabs-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--global-size-unit-1);
+  height: var(--component-tabs-trigger-height);
+  padding: 0 var(--global-size-unit-3);
+  border: none;
+  background: transparent;
+  border-radius: var(--component-tabs-trigger-radius);
+  font-family: var(--global-font-family-sans);
+  font-size: var(--component-tabs-font-size);
+  font-weight: var(--global-font-weight-medium);
+  color: var(--theme-text-muted);
+  cursor: pointer;
+  transition:
+    background-color var(--theme-transition-default),
+    color var(--theme-transition-default);
+}
+
+.tabs-trigger__icon {
+  width: var(--component-tabs-icon-size);
+  height: var(--component-tabs-icon-size);
+}
+
+.tabs-trigger[aria-selected="true"] {
+  background-color: var(--theme-surface-raised);
+  color: var(--theme-text-default);
+}
+
+.tabs-trigger:focus-visible {
+  outline: 2px solid var(--theme-border-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Panel ─────────────────────────────────────────────── */
+.tabs-panel {
+  padding: var(--global-size-unit-4) 0;
+}
+
+.tabs-panel[hidden] {
+  display: none;
+}

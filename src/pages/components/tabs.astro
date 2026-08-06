@@ -1,0 +1,26 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Tabs from '../../../registry/components/tabs/tabs.astro'
+---
+
+<DocsLayout title="Tabs" currentPath="/components/tabs">
+  <h1 class="docs-page-title">Tabs</h1>
+  <p class="docs-page-description">Switch between panels of content.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/tabs.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/tabs.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Default</h2>
+    <Tabs items={[{ id: 'overview', label: 'Overview' }, { id: 'details', label: 'Details' }, { id: 'settings', label: 'Settings' }]}>
+      <div class="tabs-panel" data-tab-panel="overview">Overview panel content.</div>
+      <div class="tabs-panel" data-tab-panel="details" hidden>Details panel content.</div>
+      <div class="tabs-panel" data-tab-panel="settings" hidden>Settings panel content.</div>
+    </Tabs>
+  </div>
+</DocsLayout>

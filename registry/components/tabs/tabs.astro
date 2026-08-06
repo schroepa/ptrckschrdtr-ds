@@ -1,0 +1,104 @@
+---
+/**
+ * ptrckschrdtr-ds — Tabs (Astro)
+ *
+ * Props:
+ *   items      — { id: string, label: string }[]
+ *   defaultTab — string  → id of the initially active tab (default: items[0].id)
+ *   class      — additional CSS classes
+ *
+ * Usage: put one panel element per tab in the default slot, each
+ * tagged class="tabs-panel" data-tab-panel="<id>" matching an item id.
+ *
+ *   <Tabs items={[{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }]}>
+ *     <div class="tabs-panel" data-tab-panel="a">Panel A</div>
+ *     <div class="tabs-panel" data-tab-panel="b">Panel B</div>
+ *   </Tabs>
+ *
+ * Note: panels render via the slot and are hidden by client-side JS
+ * once it runs — there is a brief flash of all panels on first paint.
+ * Acceptable for v1; revisit with panels-as-prop if it becomes an issue.
+ */
+
+import './tabs.css'
+
+interface TabItem {
+  id: string
+  label: string
+}
+
+interface Props {
+  items: TabItem[]
+  defaultTab?: string
+  class?: string
+  [key: string]: unknown
+}
+
+const {
+  items,
+  defaultTab = items[0]?.id,
+  class: className,
+  ...rest
+} = Astro.props
+
+const groupId = `tabs-${Math.random().toString(36).slice(2, 9)}`
+---
+
+<div class={['tabs', className].filter(Boolean).join(' ')} data-tabs-root data-default-tab={defaultTab} {...rest}>
+  <div class="tabs-list" role="tablist">
+    {items.map((item) => (
+      <button
+        type="button"
+        class="tabs-trigger"
+        id={`${groupId}-tab-${item.id}`}
+        role="tab"
+        aria-selected={item.id === defaultTab ? 'true' : 'false'}
+        aria-controls={`${groupId}-panel-${item.id}`}
+        tabindex={item.id === defaultTab ? 0 : -1}
+        data-tab-trigger={item.id}
+      >
+        {item.label}
+      </button>
+    ))}
+  </div>
+  <slot />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tabs-root]').forEach((root) => {
+    const triggers = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-tab-trigger]'))
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-tab-panel]'))
+
+    function activate(id: string) {
+      triggers.forEach((trigger) => {
+        const isActive = trigger.dataset.tabTrigger === id
+        trigger.setAttribute('aria-selected', String(isActive))
+        trigger.tabIndex = isActive ? 0 : -1
+      })
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.tabPanel !== id
+      })
+    }
+
+    triggers.forEach((trigger, index) => {
+      trigger.addEventListener('click', () => activate(trigger.dataset.tabTrigger!))
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault()
+          const next = triggers[(index + 1) % triggers.length]
+          next.focus()
+          activate(next.dataset.tabTrigger!)
+        }
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault()
+          const prev = triggers[(index - 1 + triggers.length) % triggers.length]
+          prev.focus()
+          activate(prev.dataset.tabTrigger!)
+        }
+      })
+    })
+
+    const defaultTab = root.dataset.defaultTab
+    if (defaultTab) activate(defaultTab)
+  })
+</script>
