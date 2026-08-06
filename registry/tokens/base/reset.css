@@ -18,11 +18,11 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
-  font-size: var(--text-md);
-  line-height: var(--leading-normal);
-  color: var(--color-text-default);
-  background-color: var(--color-bg-default);
+  font-family: var(--global-font-family-sans);
+  font-size: var(--global-font-size-base);
+  line-height: var(--global-line-height-normal);
+  color: var(--theme-text-default);
+  background-color: var(--theme-surface-page);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
