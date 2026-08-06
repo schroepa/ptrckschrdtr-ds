@@ -100,7 +100,7 @@
       "title": "Badge",
       "description": "Inline label for status, categories, or metadata. Variants: default, primary, secondary, success, warning, error, info. Styles: solid, subtle, outline. Sizes: sm, md, lg. Supports dot indicator.",
       "registryDependencies": [
-        "ptrckschrdtr-ds/tokens-semantic"
+        "ptrckschrdtr-ds/tokens-theme"
       ],
       "files": [
         {
