@@ -173,6 +173,33 @@
           "target": "src/components/ds/select/select.tsx"
         }
       ]
+    },
+
+    {
+      "name": "checkbox",
+      "type": "registry:component",
+      "title": "Checkbox",
+      "description": "Single checkbox control with an optional label. States: unchecked, checked, disabled.",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/components/checkbox/checkbox.css",
+          "type": "registry:style",
+          "target": "src/components/ds/checkbox/checkbox.css"
+        },
+        {
+          "path": "registry/components/checkbox/checkbox.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/checkbox/checkbox.astro"
+        },
+        {
+          "path": "registry/components/checkbox/checkbox.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/checkbox/checkbox.tsx"
+        }
+      ]
     }
 
   ]

@@ -1,0 +1,46 @@
+---
+/**
+ * ptrckschrdtr-ds — Checkbox (Astro)
+ *
+ * Props:
+ *   checked  — boolean
+ *   disabled — boolean
+ *   label    — string  → renders a <label> next to the checkbox
+ *   name     — string
+ *   value    — string
+ *   class    — additional CSS classes
+ */
+
+import './checkbox.css'
+
+interface Props {
+  checked?: boolean
+  disabled?: boolean
+  label?: string
+  name?: string
+  value?: string
+  class?: string
+  [key: string]: unknown
+}
+
+const {
+  checked = false,
+  disabled = false,
+  label,
+  name,
+  value,
+  class: className,
+  ...rest
+} = Astro.props
+
+const classes = ['checkbox', className].filter(Boolean).join(' ')
+---
+
+{label ? (
+  <label class="checkbox-field">
+    <input type="checkbox" class={classes} checked={checked} disabled={disabled} name={name} value={value} {...rest} />
+    <span class="checkbox-field__label">{label}</span>
+  </label>
+) : (
+  <input type="checkbox" class={classes} checked={checked} disabled={disabled} name={name} value={value} {...rest} />
+)}

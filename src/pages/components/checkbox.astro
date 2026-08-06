@@ -1,0 +1,35 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Checkbox from '../../../registry/components/checkbox/checkbox.astro'
+---
+
+<DocsLayout title="Checkbox" currentPath="/components/checkbox">
+  <h1 class="docs-page-title">Checkbox</h1>
+  <p class="docs-page-description">A single checkbox control with an optional label.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/checkbox.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/checkbox.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">States</h2>
+    <div class="docs-preview">
+      <Checkbox />
+      <Checkbox checked />
+      <Checkbox disabled />
+      <Checkbox checked disabled />
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">With label</h2>
+    <div class="docs-preview">
+      <Checkbox label="Accept terms and conditions" />
+      <Checkbox label="Already checked" checked />
+    </div>
+  </div>
+</DocsLayout>
