@@ -1,0 +1,33 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Avatar from '../../../registry/components/avatar/avatar.astro'
+---
+
+<DocsLayout title="Avatar" currentPath="/components/avatar">
+  <h1 class="docs-page-title">Avatar</h1>
+  <p class="docs-page-description">Initials, icon, or image representation of a user. 2 sizes.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/avatar.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/avatar.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Type</h2>
+    <div class="docs-preview">
+      <Avatar type="initials" initials="PS" />
+      <Avatar type="icon" />
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Sizes</h2>
+    <div class="docs-preview">
+      <Avatar type="initials" initials="PS" size="sm" />
+      <Avatar type="initials" initials="PS" />
+    </div>
+  </div>
+</DocsLayout>

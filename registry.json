@@ -227,6 +227,33 @@
           "target": "src/components/ds/switch/switch.tsx"
         }
       ]
+    },
+
+    {
+      "name": "avatar",
+      "type": "registry:component",
+      "title": "Avatar",
+      "description": "Initials, icon, or image representation of a user. Sizes: sm, md.",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/components/avatar/avatar.css",
+          "type": "registry:style",
+          "target": "src/components/ds/avatar/avatar.css"
+        },
+        {
+          "path": "registry/components/avatar/avatar.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/avatar/avatar.astro"
+        },
+        {
+          "path": "registry/components/avatar/avatar.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/avatar/avatar.tsx"
+        }
+      ]
     }
 
   ]

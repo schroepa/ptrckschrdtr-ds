@@ -1,0 +1,48 @@
+---
+/**
+ * ptrckschrdtr-ds — Avatar (Astro)
+ *
+ * Props:
+ *   type     — 'initials' | 'icon' | 'image'  (default: 'initials')
+ *   src      — string  → image URL, used when type='image'
+ *   alt      — string  → alt text for image
+ *   initials — string  → shown when type='initials'
+ *   size     — 'sm' | 'md'  (default: 'md')
+ *   class    — additional CSS classes
+ */
+
+import './avatar.css'
+
+interface Props {
+  type?: 'initials' | 'icon' | 'image'
+  src?: string
+  alt?: string
+  initials?: string
+  size?: 'sm' | 'md'
+  class?: string
+  [key: string]: unknown
+}
+
+const {
+  type = 'initials',
+  src,
+  alt = '',
+  initials,
+  size = 'md',
+  class: className,
+  ...rest
+} = Astro.props
+
+const classes = ['avatar', size === 'sm' && 'avatar--sm', className].filter(Boolean).join(' ')
+---
+
+<span class={classes} {...rest}>
+  {type === 'image' && src && <img src={src} alt={alt} />}
+  {type === 'icon' && (
+    <svg class="avatar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 21a8 8 0 0 0-16 0" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  )}
+  {type === 'initials' && initials}
+</span>
