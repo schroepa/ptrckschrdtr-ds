@@ -73,7 +73,7 @@
       "title": "Card",
       "description": "Flexible container component with optional header, body, footer, and media slots. Variants: default, outlined, ghost, elevated. Supports interactive hover states and href for clickable cards. React version exports sub-components: CardHeader, CardTitle, CardDescription, CardBody, CardFooter, CardMedia.",
       "registryDependencies": [
-        "ptrckschrdtr-ds/tokens-semantic"
+        "ptrckschrdtr-ds/tokens-theme"
       ],
       "files": [
         {
