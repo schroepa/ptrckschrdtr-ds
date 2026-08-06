@@ -200,6 +200,33 @@
           "target": "src/components/ds/checkbox/checkbox.tsx"
         }
       ]
+    },
+
+    {
+      "name": "switch",
+      "type": "registry:component",
+      "title": "Switch",
+      "description": "On/off toggle control with an optional label. States: off, on, disabled.",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/components/switch/switch.css",
+          "type": "registry:style",
+          "target": "src/components/ds/switch/switch.css"
+        },
+        {
+          "path": "registry/components/switch/switch.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/switch/switch.astro"
+        },
+        {
+          "path": "registry/components/switch/switch.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/switch/switch.tsx"
+        }
+      ]
     }
 
   ]

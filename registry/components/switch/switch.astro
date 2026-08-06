@@ -1,0 +1,46 @@
+---
+/**
+ * ptrckschrdtr-ds — Switch (Astro)
+ *
+ * Props:
+ *   checked  — boolean
+ *   disabled — boolean
+ *   label    — string  → renders a <label> next to the switch
+ *   name     — string
+ *   value    — string
+ *   class    — additional CSS classes
+ */
+
+import './switch.css'
+
+interface Props {
+  checked?: boolean
+  disabled?: boolean
+  label?: string
+  name?: string
+  value?: string
+  class?: string
+  [key: string]: unknown
+}
+
+const {
+  checked = false,
+  disabled = false,
+  label,
+  name,
+  value,
+  class: className,
+  ...rest
+} = Astro.props
+
+const classes = ['switch', className].filter(Boolean).join(' ')
+---
+
+{label ? (
+  <label class="switch-field">
+    <input type="checkbox" role="switch" class={classes} checked={checked} disabled={disabled} name={name} value={value} {...rest} />
+    <span class="switch-field__label">{label}</span>
+  </label>
+) : (
+  <input type="checkbox" role="switch" class={classes} checked={checked} disabled={disabled} name={name} value={value} {...rest} />
+)}

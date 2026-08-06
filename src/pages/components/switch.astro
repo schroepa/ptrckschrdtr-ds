@@ -1,0 +1,35 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Switch from '../../../registry/components/switch/switch.astro'
+---
+
+<DocsLayout title="Switch" currentPath="/components/switch">
+  <h1 class="docs-page-title">Switch</h1>
+  <p class="docs-page-description">An on/off toggle control with an optional label.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/switch.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/switch.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">States</h2>
+    <div class="docs-preview">
+      <Switch />
+      <Switch checked />
+      <Switch disabled />
+      <Switch checked disabled />
+    </div>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">With label</h2>
+    <div class="docs-preview">
+      <Switch label="Enable notifications" />
+      <Switch label="Already on" checked />
+    </div>
+  </div>
+</DocsLayout>

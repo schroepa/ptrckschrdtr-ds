@@ -1,0 +1,92 @@
+/**
+ * ptrckschrdtr-ds — Component: Switch
+ * ────────────────────────────────────
+ * States: off | on | hover | focus-visible | disabled
+ *
+ * Anatomy:
+ *   .switch              → the <input type="checkbox"> styled as a track
+ *   .switch-field        → optional wrapper when a label is used
+ *   .switch-field__label → label text
+ *
+ * Track radius uses the "pill" pattern value (999px), not the regular
+ * radius-full scale step, so it stays fully round regardless of height.
+ */
+
+/* ── Component Tokens ──────────────────────────────────── */
+:root {
+  --component-switch-width:      2.25rem;
+  --component-switch-height:     var(--global-control-height-20);
+  --component-switch-radius:     var(--global-radius-pill);
+  --component-switch-track-off:  var(--theme-border-default);
+  --component-switch-track-on:   var(--theme-button-primary-bg);
+  --component-switch-thumb:      var(--theme-surface-page);
+  --component-switch-transition: var(--theme-transition-default);
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+.switch {
+  appearance: none;
+  -webkit-appearance: none;
+  width: var(--component-switch-width);
+  height: var(--component-switch-height);
+  margin: 0;
+  border-radius: var(--component-switch-radius);
+  background-color: var(--component-switch-track-off);
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color var(--component-switch-transition);
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(var(--component-switch-height) - 4px);
+  height: calc(var(--component-switch-height) - 4px);
+  border-radius: var(--global-radius-pill);
+  background-color: var(--component-switch-thumb);
+  transition: transform var(--component-switch-transition);
+}
+
+.switch:checked {
+  background-color: var(--component-switch-track-on);
+}
+
+.switch:checked::after {
+  transform: translateX(calc(var(--component-switch-width) - var(--component-switch-height)));
+}
+
+.switch:focus-visible {
+  outline: 2px solid var(--theme-border-focus-ring);
+  outline-offset: 2px;
+}
+
+.switch:disabled {
+  opacity: var(--global-opacity-50);
+  cursor: not-allowed;
+}
+
+/* ── With label wrapper ──────────────────────────────────── */
+.switch-field {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--global-size-unit-2);
+  cursor: pointer;
+}
+
+.switch-field__label {
+  font-family: var(--global-font-family-sans);
+  font-size: var(--global-font-size-sm);
+  color: var(--theme-text-default);
+}
+
+.switch-field:has(.switch:disabled) {
+  cursor: not-allowed;
+  opacity: var(--global-opacity-50);
+}
+
+.switch-field:has(.switch:disabled) .switch {
+  opacity: 1;
+}
