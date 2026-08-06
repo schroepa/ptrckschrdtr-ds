@@ -10,155 +10,154 @@
  *   .input-field__label   → label text
  *   .input-field__input   → the actual input element
  *   .input-field__hint    → helper or error text below
+ *
+ * Disabled state uses opacity (--global-opacity-50) instead of a
+ * separate background/text color pair, matching Figma's Input pattern.
  */
 
 /* ── Component Tokens ──────────────────────────────────── */
 :root {
-  --input-font-family:    var(--font-sans);
-  --input-font-size:      var(--text-sm);
-  --input-radius:         var(--radius-component);
-  --input-transition:     var(--transition-default);
+  --component-input-font-family: var(--global-font-family-sans);
+  --component-input-font-size:   var(--global-font-size-sm);
+  --component-input-radius:      var(--global-radius-lg);
+  --component-input-transition:  var(--theme-transition-default);
 
-  --input-border:         var(--color-border-default);
-  --input-border-focus:   var(--color-border-focus);
-  --input-border-error:   var(--color-status-error);
-  --input-border-success: var(--color-status-success);
+  --component-input-border:         var(--theme-border-input);
+  --component-input-border-focus:   var(--theme-border-focus-ring);
+  --component-input-border-error:   var(--theme-status-destructive);
+  --component-input-border-success: var(--theme-status-success);
 
-  --input-bg:             var(--color-surface-default);
-  --input-bg-disabled:    var(--color-bg-muted);
+  --component-input-bg: var(--theme-surface-raised);
 
-  --input-text:           var(--color-text-default);
-  --input-text-placeholder: var(--color-text-subtle);
-  --input-text-disabled:  var(--color-text-disabled);
+  --component-input-text:             var(--theme-text-default);
+  --component-input-text-placeholder: var(--theme-text-subtle);
 
-  --input-label-size:     var(--text-sm);
-  --input-label-weight:   var(--weight-medium);
-  --input-label-color:    var(--color-text-default);
+  --component-input-label-size:   var(--global-font-size-sm);
+  --component-input-label-weight: var(--global-font-weight-medium);
+  --component-input-label-color:  var(--theme-text-default);
 
-  --input-hint-size:      var(--text-xs);
-  --input-hint-color:     var(--color-text-muted);
+  --component-input-hint-size:  var(--global-font-size-xs);
+  --component-input-hint-color: var(--theme-text-muted);
 
-  --input-padding-x-sm:   var(--space-2);
-  --input-padding-y-sm:   var(--space-1);
-  --input-padding-x-md:   var(--space-3);
-  --input-padding-y-md:   var(--space-2);
-  --input-padding-x-lg:   var(--space-4);
-  --input-padding-y-lg:   var(--space-3);
+  --component-input-padding-x-sm: var(--global-size-unit-2);
+  --component-input-padding-y-sm: var(--global-size-unit-1);
+  --component-input-padding-x-md: var(--global-size-unit-3);
+  --component-input-padding-y-md: var(--global-size-unit-2);
+  --component-input-padding-x-lg: var(--global-size-unit-4);
+  --component-input-padding-y-lg: var(--global-size-unit-3);
 }
 
 /* ── Field Wrapper ─────────────────────────────────────── */
 .input-field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--global-size-unit-1);
   width: 100%;
 }
 
 /* ── Label ─────────────────────────────────────────────── */
 .input-field__label {
-  font-family: var(--input-font-family);
-  font-size: var(--input-label-size);
-  font-weight: var(--input-label-weight);
-  color: var(--input-label-color);
-  line-height: var(--leading-snug);
+  font-family: var(--component-input-font-family);
+  font-size: var(--component-input-label-size);
+  font-weight: var(--component-input-label-weight);
+  color: var(--component-input-label-color);
+  line-height: var(--global-line-height-snug);
 }
 
 .input-field__label--required::after {
   content: ' *';
-  color: var(--color-status-error);
+  color: var(--theme-status-destructive);
 }
 
 /* ── Input Element ─────────────────────────────────────── */
 .input-field__input {
   width: 100%;
-  font-family: var(--input-font-family);
-  font-size: var(--input-font-size);
-  color: var(--input-text);
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: var(--input-radius);
+  font-family: var(--component-input-font-family);
+  font-size: var(--component-input-font-size);
+  color: var(--component-input-text);
+  background-color: var(--component-input-bg);
+  border: 1px solid var(--component-input-border);
+  border-radius: var(--component-input-radius);
   outline: none;
   appearance: none;
   transition:
-    border-color var(--input-transition),
-    box-shadow var(--input-transition),
-    background-color var(--input-transition);
+    border-color var(--component-input-transition),
+    box-shadow var(--component-input-transition),
+    background-color var(--component-input-transition);
 
   /* Default size: md */
-  padding: var(--input-padding-y-md) var(--input-padding-x-md);
+  padding: var(--component-input-padding-y-md) var(--component-input-padding-x-md);
 }
 
 .input-field__input::placeholder {
-  color: var(--input-text-placeholder);
+  color: var(--component-input-text-placeholder);
 }
 
 .input-field__input:focus {
-  border-color: var(--input-border-focus);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-border-focus) 15%, transparent);
+  border-color: var(--component-input-border-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-border-focus-ring) 15%, transparent);
 }
 
 .input-field__input:disabled {
-  background-color: var(--input-bg-disabled);
-  color: var(--input-text-disabled);
+  opacity: var(--global-opacity-50);
   cursor: not-allowed;
-  opacity: 0.6;
 }
 
 .input-field__input:read-only {
-  background-color: var(--color-bg-subtle);
+  background-color: var(--theme-surface-subtle);
   cursor: default;
 }
 
 /* ── Sizes ─────────────────────────────────────────────── */
 .input-field--sm .input-field__input {
-  font-size: var(--text-xs);
-  padding: var(--input-padding-y-sm) var(--input-padding-x-sm);
+  font-size: var(--global-font-size-xs);
+  padding: var(--component-input-padding-y-sm) var(--component-input-padding-x-sm);
 }
 
 .input-field--lg .input-field__input {
-  font-size: var(--text-md);
-  padding: var(--input-padding-y-lg) var(--input-padding-x-lg);
+  font-size: var(--global-font-size-base);
+  padding: var(--component-input-padding-y-lg) var(--component-input-padding-x-lg);
 }
 
 /* ── Variant: Error ────────────────────────────────────── */
 .input-field--error .input-field__input {
-  border-color: var(--input-border-error);
+  border-color: var(--component-input-border-error);
 }
 
 .input-field--error .input-field__input:focus {
-  border-color: var(--input-border-error);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 15%, transparent);
+  border-color: var(--component-input-border-error);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-status-destructive) 15%, transparent);
 }
 
 .input-field--error .input-field__hint {
-  color: var(--color-status-error);
+  color: var(--theme-status-destructive);
 }
 
 /* ── Variant: Success ──────────────────────────────────── */
 .input-field--success .input-field__input {
-  border-color: var(--input-border-success);
+  border-color: var(--component-input-border-success);
 }
 
 .input-field--success .input-field__input:focus {
-  border-color: var(--input-border-success);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-success) 15%, transparent);
+  border-color: var(--component-input-border-success);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-status-success) 15%, transparent);
 }
 
 .input-field--success .input-field__hint {
-  color: var(--color-status-success);
+  color: var(--theme-status-success);
 }
 
 /* ── Hint / Helper Text ────────────────────────────────── */
 .input-field__hint {
-  font-family: var(--input-font-family);
-  font-size: var(--input-hint-size);
-  color: var(--input-hint-color);
-  line-height: var(--leading-snug);
+  font-family: var(--component-input-font-family);
+  font-size: var(--component-input-hint-size);
+  color: var(--component-input-hint-color);
+  line-height: var(--global-line-height-snug);
 }
 
 /* ── Textarea ──────────────────────────────────────────── */
 .input-field__input--textarea {
   resize: vertical;
   min-height: 6rem;
-  line-height: var(--leading-relaxed);
+  line-height: var(--global-line-height-normal);
 }

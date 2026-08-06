@@ -46,7 +46,7 @@
       "title": "Input",
       "description": "Form input field with label, hint text, and validation states. Variants: default, error, success. Sizes: sm, md, lg. Supports textarea, required, disabled, readonly. Available as input.astro and input.tsx (React).",
       "registryDependencies": [
-        "ptrckschrdtr-ds/tokens-semantic"
+        "ptrckschrdtr-ds/tokens-theme"
       ],
       "files": [
         {
