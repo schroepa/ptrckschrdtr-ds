@@ -1,0 +1,24 @@
+/**
+ * ptrckschrdtr-ds — Component: Separator
+ * ────────────────────────────────────
+ * Horizontal-only in this phase — Figma's page doesn't document an
+ * orientation variant. Add --separator--vertical later if needed.
+ */
+
+/* ── Component Tokens ──────────────────────────────────── */
+:root {
+  --component-separator-color:     var(--theme-border-default);
+  --component-separator-thickness: var(--global-border-width-hairline);
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+.separator {
+  border: none;
+  background-color: var(--component-separator-color);
+  flex-shrink: 0;
+}
+
+.separator--horizontal {
+  width: 100%;
+  height: var(--component-separator-thickness);
+}

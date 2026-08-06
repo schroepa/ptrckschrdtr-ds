@@ -1,0 +1,26 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Separator from '../../../registry/components/separator/separator.astro'
+---
+
+<DocsLayout title="Separator" currentPath="/components/separator">
+  <h1 class="docs-page-title">Separator</h1>
+  <p class="docs-page-description">A horizontal rule for dividing content.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/separator.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/separator.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Default</h2>
+    <div style="max-width: 320px;">
+      <p>Content above</p>
+      <Separator />
+      <p>Content below</p>
+    </div>
+  </div>
+</DocsLayout>

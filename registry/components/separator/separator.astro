@@ -1,0 +1,20 @@
+---
+/**
+ * ptrckschrdtr-ds — Separator (Astro)
+ *
+ * Props:
+ *   class — additional CSS classes
+ */
+
+import './separator.css'
+
+interface Props {
+  class?: string
+  [key: string]: unknown
+}
+
+const { class: className, ...rest } = Astro.props
+const classes = ['separator', 'separator--horizontal', className].filter(Boolean).join(' ')
+---
+
+<hr class={classes} role="separator" {...rest} />

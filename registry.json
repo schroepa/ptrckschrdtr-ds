@@ -254,6 +254,33 @@
           "target": "src/components/ds/avatar/avatar.tsx"
         }
       ]
+    },
+
+    {
+      "name": "separator",
+      "type": "registry:component",
+      "title": "Separator",
+      "description": "Horizontal rule for dividing content.",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/components/separator/separator.css",
+          "type": "registry:style",
+          "target": "src/components/ds/separator/separator.css"
+        },
+        {
+          "path": "registry/components/separator/separator.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/separator/separator.astro"
+        },
+        {
+          "path": "registry/components/separator/separator.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/separator/separator.tsx"
+        }
+      ]
     }
 
   ]
