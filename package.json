@@ -1,7 +1,7 @@
 {
   "name": "ptrckschrdtr-ds",
   "version": "0.1.0",
-  "description": "Personal design system registry by @ptrckschrdtr. Multi-brand, framework-agnostic, built on shadcn registry.",
+  "description": "Personal design system registry by @ptrckschrdtr. Built on shadcn registry, tokens sourced from the Figma GTC design system.",
   "homepage": "https://ds.ptrckschrdtr.de",
   "scripts": {
     "dev": "astro dev",

@@ -24,16 +24,19 @@ Hosting: Vercel (Auto-Deploy bei Push auf `main`)
 ## Architektur
 
 ```
-Primitives → Semantic → Component
+Global → Theme → Component
 ```
+
+Modell und Werte kommen aus dem Figma-File "ptrckschrdtr GTC DS"
+(File-Key `5FKdZiYvwYJrdSNDD5PuLZ`).
 
 | Layer | Datei | Regel |
 |-------|-------|-------|
-| 1 — Primitives | `registry/tokens/base/primitives.css` | Nur Rohwerte. Nie direkt in Komponenten. |
-| 2 — Semantic | `registry/tokens/semantic/semantic.css` | Bedeutung. Brands überschreiben diese Slots. |
-| 3 — Component | `[component]/[name].css` | Tokens die Semantic konsumieren. |
+| 1 — Global | `registry/tokens/base/global.css` | Nur Rohwerte. Nie direkt in Komponenten. |
+| 2 — Theme | `registry/tokens/theme/theme.css` | Bedeutung. Light ist Default, Dark via `[data-theme="dark"]`. |
+| 3 — Component | `[component]/[name].css` | Tokens die Theme konsumieren. |
 
-**Wichtig:** Komponenten greifen NUR auf Component Tokens zu, niemals direkt auf Semantic oder Primitive Tokens.
+**Wichtig:** Komponenten greifen NUR auf Component Tokens zu, niemals direkt auf Theme- oder Global-Tokens. Es gibt kein `brand-primary`/`brand-secondary`-Konzept — Primary ist der höchstkontrastige Neutralton, keine eigene Markenfarbe.
 
 ---
 
@@ -47,13 +50,10 @@ ptrckschrdtr-ds/
 ├── registry/
 │   ├── tokens/
 │   │   ├── base/
-│   │   │   ├── primitives.css         ← Layer 1: Rohwerte
+│   │   │   ├── global.css             ← Layer 1: Rohwerte
 │   │   │   └── reset.css              ← Minimaler CSS Reset
-│   │   ├── semantic/
-│   │   │   └── semantic.css           ← Layer 2: Semantic Slots
-│   │   └── themes/
-│   │       └── example/
-│   │           └── theme.css          ← Brand-Starter-Template
+│   │   └── theme/
+│   │       └── theme.css              ← Layer 2: Theme Slots (Light default + [data-theme="dark"])
 │   └── components/
 │       ├── button/
 │       │   ├── button.css             ← Source of Truth
@@ -172,33 +172,14 @@ Vercel deployt automatisch. Fertig.
 
 ---
 
-## Workflow: Neue Brand / neues Projekt
-
-```bash
-# 1. Example-Theme duplizieren
-cp registry/tokens/themes/example/theme.css registry/tokens/themes/[brand]/theme.css
-
-# 2. Slots befüllen — Minimum:
-#    --color-brand-primary + Varianten
-#    --font-sans, --font-display
-#    --radius-component
-
-# 3. In registry.json registrieren (wie Komponente, aber type: "registry:style")
-
-# 4. Bauen und deployen
-npm run registry:build && git add . && git commit -m "feat: add theme-[brand]" && git push
-```
-
----
-
 ## Konventionen
 
 ### Naming
 
 - CSS-Klassen: BEM-ähnlich — `.card`, `.card__header`, `.card--elevated`
-- Component Tokens: `--[komponent]-[eigenschaft]` — `--btn-radius`, `--card-padding-md`
-- Semantic Tokens: `--color-[kategorie]-[variante]` — `--color-brand-primary`, `--color-text-muted`
-- Primitive Tokens: `--primitive-[kategorie]-[wert]` — `--primitive-neutral-500`
+- Component Tokens: `--component-[komponent]-[eigenschaft]` — `--component-button-radius-md`, `--component-card-padding-md`
+- Theme Tokens: `--theme-[kategorie]-[variante]` — `--theme-text-default`, `--theme-status-destructive`
+- Global Tokens: `--global-[kategorie]-[wert]` — `--global-color-base-5`
 
 ### Props-API (beide Frameworks identisch)
 
