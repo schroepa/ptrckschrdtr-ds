@@ -73,7 +73,7 @@
   --theme-surface-raised:  var(--global-color-base-2);
   --theme-surface-overlay: var(--global-color-base-3);
   --theme-surface-subtle:  var(--global-color-base-1);
-  --theme-surface-muted:   var(--global-color-base-4);
+  --theme-surface-muted:   var(--global-color-base-3);
 
   /* ── 2. Text ──────────────────────────────────────────────── */
   --theme-text-default:    var(--global-color-base-11);
@@ -96,15 +96,22 @@
   /* ── 6. Status ────────────────────────────────────────────── */
   --theme-status-destructive:           var(--global-color-accent-bright);
   --theme-status-destructive-subtle-bg: var(--global-color-accent-a-subtle);
+  --theme-status-destructive-text:      var(--global-color-base-1);
 
   --theme-status-success:           var(--global-color-success-bright);
   --theme-status-success-subtle-bg: var(--global-color-success-a-subtle);
+  --theme-status-success-text:      var(--global-color-base-1);
 
   --theme-status-warning:           var(--global-color-warning-bright);
   --theme-status-warning-subtle-bg: var(--global-color-warning-a-subtle);
 
   --theme-status-info:           var(--global-color-info-bright);
   --theme-status-info-subtle-bg: var(--global-color-info-a-subtle);
+  --theme-status-info-text:      var(--global-color-base-1);
 
-  /* icon-*, *-text, and transition-default are mode-independent — inherited from :root */
+  /* icon-* and transition-default are mode-independent — inherited from
+     :root. status-warning-text is also inherited (correct in both modes,
+     since warning stays light-toned). destructive/success/info-text are
+     overridden above — the light-mode value (white) fails contrast
+     against the brighter dark-mode status backgrounds. */
 }

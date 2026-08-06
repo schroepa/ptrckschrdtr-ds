@@ -23,11 +23,17 @@ import DocsLayout from '../layouts/DocsLayout.astro'
     <h2 class="docs-section__title">Components</h2>
     <div class="docs-component-grid">
       {[
-        { name: 'Button', desc: '4 variants, 3 sizes, loading, icon-only',       href: '/components/button' },
-        { name: 'Input',  desc: 'Label, hint, error/success states, textarea',    href: '/components/input'  },
-        { name: 'Card',   desc: 'Header/body/footer/media slots, 4 variants',     href: '/components/card'   },
-        { name: 'Badge',  desc: '7 variants, 3 styles (solid/subtle/outline)',    href: '/components/badge'  },
-        { name: 'Select', desc: 'Native select, variants, multiple mode',         href: '/components/select' },
+        { name: 'Button',    desc: '4 variants, 3 sizes, loading, icon-only',       href: '/components/button' },
+        { name: 'Input',     desc: 'Label, hint, error/success states, textarea',    href: '/components/input'  },
+        { name: 'Card',      desc: 'Header/body/footer/media slots, 4 variants',     href: '/components/card'   },
+        { name: 'Badge',     desc: '7 variants, 3 styles (solid/subtle/outline)',    href: '/components/badge'  },
+        { name: 'Select',    desc: 'Native select, variants, multiple mode',         href: '/components/select' },
+        { name: 'Checkbox',  desc: 'Single checkbox with optional label',            href: '/components/checkbox' },
+        { name: 'Switch',    desc: 'On/off toggle with optional label',              href: '/components/switch' },
+        { name: 'Avatar',    desc: 'Initials, icon, or image, 2 sizes',              href: '/components/avatar' },
+        { name: 'Separator', desc: 'Horizontal rule for dividing content',           href: '/components/separator' },
+        { name: 'Alert',     desc: 'Callout with variant-bound icon',                href: '/components/alert' },
+        { name: 'Tabs',      desc: 'Switch between panels of content',              href: '/components/tabs' },
       ].map(c => (
         <a href={c.href} class="docs-component-card">
           <div class="docs-component-card__name">{c.name}</div>

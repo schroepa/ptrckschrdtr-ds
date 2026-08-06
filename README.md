@@ -1,18 +1,15 @@
 # ptrckschrdtr-ds
 
-Personal design system registry. Multi-brand, framework-agnostic, built on the shadcn registry protocol.
+Personal design system registry. Framework-agnostic, built on the shadcn registry protocol. Tokens are sourced from the Figma "ptrckschrdtr GTC DS" design system.
 
 ## Install items via CLI
 
 ```bash
 # 1. Always start with the token foundation
-npx shadcn@latest add https://ds.ptrckschrdtr.de/r/tokens-base.json
-npx shadcn@latest add https://ds.ptrckschrdtr.de/r/tokens-semantic.json
+npx shadcn@latest add https://ds.ptrckschrdtr.de/r/tokens-global.json
+npx shadcn@latest add https://ds.ptrckschrdtr.de/r/tokens-theme.json
 
-# 2. Install a brand theme (start with example, then customize)
-npx shadcn@latest add https://ds.ptrckschrdtr.de/r/theme-example.json
-
-# 3. Add components à la carte
+# 2. Add components à la carte
 npx shadcn@latest add https://ds.ptrckschrdtr.de/r/button.json
 ```
 
@@ -21,47 +18,25 @@ npx shadcn@latest add https://ds.ptrckschrdtr.de/r/button.json
 ## Architecture
 
 ```
-Primitives  →  Semantic  →  Component
+Global  →  Theme  →  Component
 (Raw values)   (Meaning)    (Usage)
 ```
 
-### Layer 1 — Primitives (`tokens/base/primitives.css`)
-Raw values. Colors, spacing, radius, typography scales, shadows, motion.  
-**Never reference these directly in components.**
+### Layer 1 — Global (`tokens/base/global.css`)
+Raw values. Colors, spacing, radius, typography scales, shadows, motion.
+**Never reference these directly in components** (except spacing/radius/typography, which components may reference directly — only colors are required to route through Theme).
 
-### Layer 2 — Semantic (`tokens/semantic/semantic.css`)
-Maps primitives to meaning: `--color-brand-primary`, `--color-surface`, `--color-text-default`, etc.  
-**Brands override these slots in their theme file.**
+### Layer 2 — Theme (`tokens/theme/theme.css`)
+Maps Global tokens to meaning: `--theme-surface-*`, `--theme-text-*`, `--theme-border-*`, `--theme-button-primary-*`, `--theme-status-*`. Light mode is the default (`:root`); Dark mode is a distinct, hand-tuned second mode activated via `[data-theme="dark"]` — not an inversion of Light. There is no `brand-primary`/`brand-secondary` concept — the primary button/badge color is the highest-contrast neutral, not an arbitrary brand hue.
 
 ### Layer 3 — Component Tokens (inside each `component.css`)
-Component-scoped tokens that consume semantic tokens: `--btn-bg: var(--color-brand-primary)`.  
-**Components only reference these — never primitives or semantic tokens directly.**
+Component-scoped tokens that consume Global/Theme tokens: `--component-button-radius-md: var(--global-radius-lg)`.
 
 ---
 
-## Adding a new Brand
+## Components
 
-1. Duplicate `registry/tokens/themes/example/theme.css`
-2. Rename to `theme-[brand].css`
-3. Override the semantic slots with your brand values
-4. Register it in `registry.json`
-5. Run `npm run registry:build`
-
-```css
-/* theme-mybrand.css — minimum required */
-:root {
-  --color-brand-primary:          #your-color;
-  --color-brand-primary-hover:    #your-color-hover;
-  --color-brand-primary-active:   #your-color-active;
-  --color-brand-primary-subtle:   #your-color-subtle;
-  --color-brand-primary-contrast: #ffffff;
-
-  --font-sans:    'Your Font', ui-sans-serif, sans-serif;
-  --font-display: 'Your Display Font', ui-sans-serif, sans-serif;
-
-  --radius-component: var(--radius-lg); /* shift overall roundness */
-}
-```
+Button, Input, Card, Badge, Select, Checkbox, Switch, Avatar, Separator, Alert, Tabs.
 
 ---
 
@@ -77,7 +52,7 @@ registry/components/[name]/
 ```
 
 **Build order:**
-1. Define component tokens in `[name].css` (consume from semantic layer)
+1. Define component tokens in `[name].css` (consume from Global/Theme)
 2. Write the HTML structure + CSS classes
 3. Write the Astro wrapper (Props → class list → HTML)
 4. Write the React wrapper (same Props, same class list, same HTML)
@@ -88,7 +63,7 @@ Then register in `registry.json`:
   "name": "my-component",
   "type": "registry:component",
   "description": "...",
-  "registryDependencies": ["ptrckschrdtr-ds/tokens-semantic"],
+  "registryDependencies": ["ptrckschrdtr-ds/tokens-theme"],
   "files": [
     { "path": "registry/components/my-component/my-component.css",   "type": "registry:style",     "target": "src/components/ds/my-component/my-component.css" },
     { "path": "registry/components/my-component/my-component.astro", "type": "registry:component", "target": "src/components/ds/my-component/my-component.astro" },
@@ -107,7 +82,7 @@ Every component documents its contract in the file header:
 Props:   variant (primary|secondary|ghost), size (sm|md|lg), disabled
 HTML:    <button class="btn btn--primary btn--md">...</button>
 CSS:     button.css
-Tokens:  --btn-bg, --btn-radius, --btn-font-weight
+Tokens:  --component-button-*
 ```
 
 When adding a new framework wrapper (Vue, Svelte, Web Component), implement this contract exactly. The CSS layer works automatically.
@@ -124,13 +99,10 @@ ptrckschrdtr-ds/
 ├── registry/
 │   ├── tokens/
 │   │   ├── base/
-│   │   │   ├── primitives.css
+│   │   │   ├── global.css
 │   │   │   └── reset.css
-│   │   ├── semantic/
-│   │   │   └── semantic.css
-│   │   └── themes/
-│   │       └── example/
-│   │           └── theme.css
+│   │   └── theme/
+│   │       └── theme.css
 │   │
 │   └── components/
 │       └── button/
@@ -140,9 +112,8 @@ ptrckschrdtr-ds/
 │
 └── public/
     └── r/               ← generated by `npm run registry:build`
-        ├── tokens-base.json
-        ├── tokens-semantic.json
-        ├── theme-example.json
+        ├── tokens-global.json
+        ├── tokens-theme.json
         └── button.json
 ```
 

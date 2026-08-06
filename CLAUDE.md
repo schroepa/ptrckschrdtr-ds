@@ -36,7 +36,7 @@ Modell und Werte kommen aus dem Figma-File "ptrckschrdtr GTC DS"
 | 2 — Theme | `registry/tokens/theme/theme.css` | Bedeutung. Light ist Default, Dark via `[data-theme="dark"]`. |
 | 3 — Component | `[component]/[name].css` | Tokens die Theme konsumieren. |
 
-**Wichtig:** Komponenten greifen NUR auf Component Tokens zu, niemals direkt auf Theme- oder Global-Tokens. Es gibt kein `brand-primary`/`brand-secondary`-Konzept — Primary ist der höchstkontrastige Neutralton, keine eigene Markenfarbe.
+**Wichtig:** Komponenten beziehen Farben NUR über Component Tokens, niemals direkt über Theme- oder Global-Tokens. Spacing/Radius/Typography dürfen Component Tokens direkt an `--global-*` binden. Es gibt kein `brand-primary`/`brand-secondary`-Konzept — Primary ist der höchstkontrastige Neutralton, keine eigene Markenfarbe.
 
 ---
 
@@ -61,7 +61,14 @@ ptrckschrdtr-ds/
 │       │   └── button.tsx             ← React-Wrapper
 │       ├── input/
 │       ├── card/
-│       └── badge/
+│       ├── badge/
+│       ├── select/
+│       ├── checkbox/
+│       ├── switch/
+│       ├── avatar/
+│       ├── separator/
+│       ├── alert/
+│       └── tabs/
 └── public/
     └── r/                             ← Build-Output (nicht committen, in .gitignore)
 ```
@@ -72,13 +79,19 @@ ptrckschrdtr-ds/
 
 | Name | Typ | Beschreibung |
 |------|-----|-------------|
-| `tokens-base` | Style | Primitives + Reset |
-| `tokens-semantic` | Style | Semantic Token Slots |
-| `theme-example` | Style | Brand-Starter-Template mit Dark Mode |
+| `tokens-global` | Style | Raw values (Farben, Spacing, Radius, Typography, Shadows, Motion) |
+| `tokens-theme` | Style | Theme Token Slots (Light default + Dark via `[data-theme="dark"]`) |
 | `button` | Component | 4 Varianten, 3 Größen, Loading, Icon-only |
 | `input` | Component | Label, Hint, Error/Success States, Textarea |
 | `card` | Component | Header/Body/Footer/Media Slots, 4 Varianten |
 | `badge` | Component | 7 Varianten, 3 Styles (solid/subtle/outline), Dot |
+| `select` | Component | Native Select, Varianten, Multiple Mode |
+| `checkbox` | Component | Einzelne Checkbox mit optionalem Label |
+| `switch` | Component | An/Aus-Toggle mit optionalem Label |
+| `avatar` | Component | Initials/Icon/Image, 2 Größen |
+| `separator` | Component | Horizontale Trennlinie |
+| `alert` | Component | Callout mit varianten-gebundenem Icon |
+| `tabs` | Component | Wechsel zwischen Content-Panels |
 
 ---
 
@@ -100,8 +113,8 @@ Reihenfolge einhalten:
 ```css
 /* ── Component Tokens ──────────────────────────────────── */
 :root {
-  --[name]-[eigenschaft]: var(--semantic-token);
-  /* Beispiel: --btn-radius: var(--radius-component); */
+  --component-[name]-[eigenschaft]: var(--theme-token-or-global-token);
+  /* Beispiel: --component-button-radius-md: var(--global-radius-lg); */
 }
 
 /* ── Base ──────────────────────────────────────────────── */
@@ -120,7 +133,7 @@ Reihenfolge einhalten:
 .[name]:disabled { ... }
 ```
 
-**Regel:** Nur Component Tokens in der CSS verwenden (`var(--btn-*)`), nie direkt `var(--color-brand-primary)` o.ä.
+**Regel:** Farben immer über Component Tokens beziehen (`var(--component-button-*)`), nie direkt `var(--theme-*)` in einer Komponenten-Regel. Spacing/Radius/Typography dürfen Component Tokens ODER `--global-*` direkt referenzieren.
 
 ### 3. Astro-Wrapper
 
@@ -150,7 +163,7 @@ Gleiche Props-API wie Astro. Gleiche Klassen-Logik. `React.forwardRef` verwenden
   "type": "registry:component",
   "title": "[Name]",
   "description": "...",
-  "registryDependencies": ["ptrckschrdtr-ds/tokens-semantic"],
+  "registryDependencies": ["ptrckschrdtr-ds/tokens-theme"],
   "files": [
     { "path": "registry/components/[name]/[name].css",   "type": "registry:style",     "target": "src/components/ds/[name]/[name].css" },
     { "path": "registry/components/[name]/[name].astro", "type": "registry:component", "target": "src/components/ds/[name]/[name].astro" },
@@ -210,11 +223,11 @@ Vercel deployt automatisch. Fertig.
 
 1. **CSS-Datei ist die Wahrheit.** Astro und React sind nur Wrapper. Designentscheidungen gehören in `.css`, nicht in die Wrapper.
 
-2. **Nie Primitives in Komponenten.** Immer über Component Tokens → Semantic Tokens → Primitives.
+2. **Farben nie direkt aus Global.** Component Tokens → Theme Tokens → Global Tokens. Spacing/Radius/Typography dürfen Component Tokens direkt an `--global-*` binden.
 
 3. **`public/r/` nicht committen.** Ist in `.gitignore`. Wird von Vercel beim Deploy generiert.
 
-4. **`registryDependencies` pflegen.** Jede Komponente die Semantic Tokens braucht, listet `ptrckschrdtr-ds/tokens-semantic`. Komponenten die andere Komponenten brauchen, listen diese ebenfalls.
+4. **`registryDependencies` pflegen.** Jede Komponente die Theme Tokens braucht, listet `ptrckschrdtr-ds/tokens-theme`. Komponenten die andere Komponenten brauchen, listen diese ebenfalls.
 
 5. **Beide Framework-Wrapper bauen.** Auch wenn ein Projekt nur Astro nutzt — die React-Version kostet 10 Minuten und macht das System für zukünftige Projekte verwendbar.
 

@@ -19,7 +19,7 @@
   --component-switch-radius:     var(--global-radius-pill);
   --component-switch-track-off:  var(--theme-border-default);
   --component-switch-track-on:   var(--theme-button-primary-bg);
-  --component-switch-thumb:      var(--theme-surface-page);
+  --component-switch-thumb:      var(--global-color-base-12);
   --component-switch-transition: var(--theme-transition-default);
 }
 
