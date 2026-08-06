@@ -1,0 +1,25 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro'
+import Alert from '../../../registry/components/alert/alert.astro'
+---
+
+<DocsLayout title="Alert" currentPath="/components/alert">
+  <h1 class="docs-page-title">Alert</h1>
+  <p class="docs-page-description">A callout for important information. Variant-bound icon.</p>
+
+  <div class="docs-install">
+    <code>npx shadcn@latest add https://ds.ptrckschrdtr.de/r/alert.json</code>
+    <button
+      class="docs-install__copy"
+      onclick="navigator.clipboard.writeText('npx shadcn@latest add https://ds.ptrckschrdtr.de/r/alert.json').then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 1500) })"
+    >Copy</button>
+  </div>
+
+  <div class="docs-section">
+    <h2 class="docs-section__title">Variants</h2>
+    <div class="docs-preview" style="flex-direction: column; align-items: stretch; gap: var(--global-size-unit-3);">
+      <Alert title="Heads up" description="This is a default informational alert." />
+      <Alert variant="destructive" title="Something went wrong" description="Your changes could not be saved." />
+    </div>
+  </div>
+</DocsLayout>

@@ -281,6 +281,33 @@
           "target": "src/components/ds/separator/separator.tsx"
         }
       ]
+    },
+
+    {
+      "name": "alert",
+      "type": "registry:component",
+      "title": "Alert",
+      "description": "Callout for important information. Variant: default, destructive. Icon is bound to variant.",
+      "registryDependencies": [
+        "ptrckschrdtr-ds/tokens-theme"
+      ],
+      "files": [
+        {
+          "path": "registry/components/alert/alert.css",
+          "type": "registry:style",
+          "target": "src/components/ds/alert/alert.css"
+        },
+        {
+          "path": "registry/components/alert/alert.astro",
+          "type": "registry:component",
+          "target": "src/components/ds/alert/alert.astro"
+        },
+        {
+          "path": "registry/components/alert/alert.tsx",
+          "type": "registry:component",
+          "target": "src/components/ds/alert/alert.tsx"
+        }
+      ]
     }
 
   ]
