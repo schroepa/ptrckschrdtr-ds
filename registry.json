@@ -154,7 +154,7 @@
       "title": "Select",
       "description": "Native select dropdown with label, hint text, and validation states. Variants: default, error, success. Sizes: sm, md, lg. Supports multiple (listbox) mode, required, disabled. Available as select.astro and select.tsx (React).",
       "registryDependencies": [
-        "ptrckschrdtr-ds/tokens-semantic"
+        "ptrckschrdtr-ds/tokens-theme"
       ],
       "files": [
         {
