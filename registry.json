@@ -127,7 +127,7 @@
       "title": "Button",
       "description": "Base button component. Variants: primary, secondary, ghost, danger. Sizes: sm, md, lg. Supports href (renders as <a>), loading state, icon-only, and full-width. Available as button.astro and button.tsx (React).",
       "registryDependencies": [
-        "ptrckschrdtr-ds/tokens-semantic"
+        "ptrckschrdtr-ds/tokens-theme"
       ],
       "files": [
         {
