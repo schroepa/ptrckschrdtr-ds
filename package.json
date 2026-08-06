@@ -12,7 +12,8 @@
     "build:all": "npm run registry:build && npm run build"
   },
   "dependencies": {
-    "astro": "latest"
+    "astro": "latest",
+    "geist": "^1.7.2"
   },
   "devDependencies": {
     "shadcn": "latest"

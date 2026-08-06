@@ -22,6 +22,7 @@
   grid-area: header;
   display: flex;
   align-items: center;
+  gap: var(--global-size-unit-3);
   padding: var(--global-size-unit-4) var(--global-size-unit-6);
   border-bottom: 1px solid var(--theme-border-subtle);
   background-color: var(--theme-surface-raised);
@@ -35,6 +36,57 @@
   font-weight: var(--global-font-weight-semibold);
   color: var(--theme-text-default);
   text-decoration: none;
+}
+
+.docs-header__spacer {
+  flex: 1;
+}
+
+/* ── Mobile Menu Toggle ────────────────────────────────── */
+.docs-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--global-control-height-31);
+  height: var(--global-control-height-31);
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--theme-border-default);
+  border-radius: var(--global-radius-md);
+  background: none;
+  color: var(--theme-text-default);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.docs-menu-toggle svg {
+  width: var(--global-icon-size-md);
+  height: var(--global-icon-size-md);
+}
+
+.docs-menu-toggle:focus-visible {
+  outline: 2px solid var(--theme-border-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Theme Toggle ──────────────────────────────────────── */
+.docs-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--global-size-unit-2);
+  flex-shrink: 0;
+}
+
+.docs-theme-toggle__icon {
+  width: var(--global-icon-size-sm);
+  height: var(--global-icon-size-sm);
+  color: var(--theme-text-muted);
+  flex-shrink: 0;
+}
+
+/* ── Mobile Backdrop ───────────────────────────────────── */
+.docs-backdrop {
+  display: none;
 }
 
 /* ── Sidebar ───────────────────────────────────────────── */
@@ -289,24 +341,66 @@
   white-space: nowrap;
 }
 
-/* ── Mobile ────────────────────────────────────────────── */
+/* ── Mobile: off-canvas drawer navigation ─────────────────
+ * Below 768px, .docs-sidebar leaves the grid and becomes a fixed,
+ * off-canvas drawer toggled by .docs-menu-toggle (see DocsLayout.astro's
+ * script). .docs-backdrop dims the content behind it and closes the
+ * drawer on click; Escape and clicking a nav link also close it.
+ * ────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .docs-layout {
     grid-template-columns: 1fr;
     grid-template-areas:
       "header"
-      "sidebar"
       "content";
   }
 
+  .docs-menu-toggle {
+    display: inline-flex;
+  }
+
   .docs-sidebar {
-    position: static;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--theme-border-subtle);
+    grid-area: unset;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(300px, 85vw);
+    height: 100vh;
+    border-right: 1px solid var(--theme-border-default);
+    box-shadow: var(--global-shadow-lg);
+    transform: translateX(-100%);
+    transition: transform var(--theme-transition-default);
+    z-index: var(--global-z-index-modal);
+    padding-top: var(--global-size-unit-6);
+  }
+
+  .docs-sidebar--open {
+    transform: translateX(0);
+  }
+
+  .docs-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--theme-transition-default);
+    z-index: var(--global-z-index-overlay);
+  }
+
+  .docs-backdrop--visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .docs-content {
     padding: var(--global-size-unit-6) var(--global-size-unit-4);
+  }
+
+  .docs-theme-toggle__icon {
+    display: none;
   }
 }

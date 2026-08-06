@@ -1,0 +1,136 @@
+/**
+ * ptrckschrdtr-ds — Docs Site: Fonts
+ * ─────────────────────────────────────
+ * Self-hosted @font-face declarations for this docs site. NOT part of the
+ * distributed registry (registry/) — font loading is a per-project concern,
+ * consuming projects bring their own font files/license and import them
+ * the same way. Family names here match registry/tokens/base/global.css's
+ * --global-font-family-* tokens exactly.
+ */
+
+/* ── Geist Variable (self-hosted, Vercel — vercel.com/font) ─────────── */
+@font-face {
+  font-family: 'Geist Variable';
+  src: url('/fonts/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Geist Mono (self-hosted, Vercel — vercel.com/font) ──────────────── */
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── PP Editorial New (licensed, Pangram Pangram — self-hosted) ──────── */
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-Thin.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-ThinItalic.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-ThinItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-Ultralight.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-Ultralight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-UltralightItalic.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-UltralightItalic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-Regular.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-Italic.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-Bold.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-BoldItalic.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-Heavy.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-Heavy.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-HeavyItalic.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-HeavyItalic.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-Ultrabold.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-Ultrabold.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/pp-editorial-new/PPEditorialNew-UltraboldItalic.woff2') format('woff2'),
+       url('/fonts/pp-editorial-new/PPEditorialNew-UltraboldItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}

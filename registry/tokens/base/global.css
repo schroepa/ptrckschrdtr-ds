@@ -57,7 +57,7 @@
   /* ── Typography: Font Families ────────────────────────────── */
   --global-font-family-sans:    'Geist Variable', ui-sans-serif, system-ui, sans-serif;
   --global-font-family-mono:    'Geist Mono', ui-monospace, "Cascadia Code", monospace;
-  --global-font-family-display: 'PP Editorial New', ui-serif, Georgia, serif;
+  --global-font-family-display: 'PP Editorial New', 'Lora', ui-serif, Georgia, serif;
   /* Import Geist / Geist Mono / PP Editorial New in the consuming
      project. Geist + Geist Mono: https://vercel.com/font — PP Editorial
      New is a licensed font (Pangram Pangram) — bring your own files. */
