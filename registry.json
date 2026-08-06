@@ -29,7 +29,7 @@
       "title": "Semantic Tokens",
       "description": "Semantic token layer that maps primitives to meaning (brand, surface, text, border, status). Install after tokens-base. Brand themes override these slots.",
       "registryDependencies": [
-        "ptrckschrdtr-ds/tokens-global"
+        "ptrckschrdtr-ds/tokens-base"
       ],
       "files": [
         {
