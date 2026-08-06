@@ -245,10 +245,6 @@ Vercel deployt automatisch. Fertig.
 
 > „Füge der Card-Komponente eine `loading`-Variante hinzu mit Skeleton-Effekt."
 
-### Neues Brand-Theme erstellen
-
-> „Erstelle ein Theme für Brand [Name] mit Primärfarbe [Hex], Sekundärfarbe [Hex], Font [Name], runden Ecken."
-
 ### Registry deployen
 
 > „Baue die Registry und zeige mir ob der Output in public/r/ vollständig ist."
