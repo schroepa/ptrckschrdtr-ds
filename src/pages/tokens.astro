@@ -3,39 +3,39 @@ import DocsLayout from '../layouts/DocsLayout.astro'
 
 const colorGroups = [
   {
-    title: 'Brand',
-    tokens: ['--color-brand-primary', '--color-brand-primary-hover', '--color-brand-primary-active', '--color-brand-primary-subtle', '--color-brand-secondary', '--color-brand-secondary-hover'],
-  },
-  {
-    title: 'Surface & Background',
-    tokens: ['--color-bg-default', '--color-bg-subtle', '--color-bg-muted', '--color-bg-emphasis', '--color-surface-default', '--color-surface-raised', '--color-surface-overlay'],
+    title: 'Surface',
+    tokens: ['--theme-surface-page', '--theme-surface-raised', '--theme-surface-overlay', '--theme-surface-subtle', '--theme-surface-muted'],
   },
   {
     title: 'Text',
-    tokens: ['--color-text-default', '--color-text-muted', '--color-text-subtle', '--color-text-disabled', '--color-text-inverse'],
+    tokens: ['--theme-text-default', '--theme-text-muted', '--theme-text-subtle', '--theme-text-on-primary'],
   },
   {
     title: 'Border',
-    tokens: ['--color-border-default', '--color-border-strong', '--color-border-subtle', '--color-border-focus'],
+    tokens: ['--theme-border-default', '--theme-border-input', '--theme-border-subtle', '--theme-border-focus-ring'],
+  },
+  {
+    title: 'Button (Primary)',
+    tokens: ['--theme-button-primary-bg', '--theme-button-primary-hover', '--theme-button-primary-active'],
   },
   {
     title: 'Status',
-    tokens: ['--color-status-success', '--color-status-warning', '--color-status-error', '--color-status-info'],
+    tokens: ['--theme-status-destructive', '--theme-status-success', '--theme-status-warning', '--theme-status-info'],
   },
 ]
 
-const spacingTokens = ['--space-1','--space-2','--space-3','--space-4','--space-5','--space-6','--space-8','--space-10','--space-12','--space-16','--space-20','--space-24']
-const radiusTokens  = ['--radius-none','--radius-sm','--radius-md','--radius-lg','--radius-xl','--radius-2xl','--radius-full']
-const textTokens    = ['--text-xs','--text-sm','--text-md','--text-lg','--text-xl','--text-2xl','--text-3xl','--text-4xl','--text-5xl']
+const spacingTokens = ['--global-size-unit-1', '--global-size-unit-2', '--global-size-unit-3', '--global-size-unit-4', '--global-size-unit-6', '--global-size-unit-8', '--global-size-unit-12', '--global-size-unit-16', '--global-size-unit-24', '--global-size-unit-32']
+const radiusTokens  = ['--global-radius-none', '--global-radius-sm', '--global-radius-md', '--global-radius-lg', '--global-radius-xl', '--global-radius-2xl', '--global-radius-full', '--global-radius-pill']
+const textTokens    = ['--global-font-size-xs', '--global-font-size-sm', '--global-font-size-base', '--global-font-size-md', '--global-font-size-lg', '--global-font-size-xl', '--global-font-size-2xl', '--global-font-size-3xl', '--global-font-size-4xl', '--global-font-size-5xl']
 ---
 
 <DocsLayout title="Tokens" currentPath="/tokens">
   <h1 class="docs-page-title">Design Tokens</h1>
-  <p class="docs-page-description">All semantic tokens. Brands override the slots in their theme.css.</p>
+  <p class="docs-page-description">Global → Theme → Component, sourced from the Figma "ptrckschrdtr GTC DS" file. Light is the default mode.</p>
 
   {colorGroups.map(group => (
     <div class="docs-section">
-      <h2 class="docs-section__title">Color — {group.title}</h2>
+      <h2 class="docs-section__title">Theme — {group.title}</h2>
       <div class="token-grid">
         {group.tokens.map(token => (
           <div class="token-swatch">
@@ -63,11 +63,11 @@ const textTokens    = ['--text-xs','--text-sm','--text-md','--text-lg','--text-x
 
   <div class="docs-section">
     <h2 class="docs-section__title">Radius</h2>
-    <div style="display: flex; flex-wrap: wrap; gap: var(--space-4);">
+    <div style="display: flex; flex-wrap: wrap; gap: var(--global-size-unit-4);">
       {radiusTokens.map(token => (
         <div style="text-align: center;">
-          <div style={`width: 48px; height: 48px; background: var(--color-brand-primary); border-radius: var(${token}); margin-bottom: var(--space-2);`}></div>
-          <div style="font-size: var(--text-xs); color: var(--color-text-muted); font-family: var(--font-mono);">{token.replace('--radius-', '')}</div>
+          <div style={`width: 48px; height: 48px; background: var(--theme-button-primary-bg); border-radius: var(${token}); margin-bottom: var(--global-size-unit-2);`}></div>
+          <div style="font-size: var(--global-font-size-xs); color: var(--theme-text-muted); font-family: var(--global-font-family-mono);">{token.replace('--global-radius-', '')}</div>
         </div>
       ))}
     </div>
@@ -75,11 +75,11 @@ const textTokens    = ['--text-xs','--text-sm','--text-md','--text-lg','--text-x
 
   <div class="docs-section">
     <h2 class="docs-section__title">Typography</h2>
-    <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+    <div style="display: flex; flex-direction: column; gap: var(--global-size-unit-3);">
       {textTokens.map(token => (
-        <div style="display: flex; align-items: baseline; gap: var(--space-4);">
-          <span style={`font-size: var(${token}); color: var(--color-text-default); font-family: var(--font-sans); min-width: 40px;`}>Aa</span>
-          <span style="font-size: var(--text-xs); color: var(--color-text-muted); font-family: var(--font-mono);">{token}</span>
+        <div style="display: flex; align-items: baseline; gap: var(--global-size-unit-4);">
+          <span style={`font-size: var(${token}); color: var(--theme-text-default); font-family: var(--global-font-family-sans); min-width: 40px;`}>Aa</span>
+          <span style="font-size: var(--global-font-size-xs); color: var(--theme-text-muted); font-family: var(--global-font-family-mono);">{token}</span>
         </div>
       ))}
     </div>
