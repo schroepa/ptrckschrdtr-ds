@@ -5,15 +5,15 @@
   "items": [
 
     {
-      "name": "tokens-base",
+      "name": "tokens-global",
       "type": "registry:style",
-      "title": "Base Tokens",
-      "description": "Primitive values (colors, spacing, radius, typography, shadows, motion). Always install this first — it is the foundation of the entire system.",
+      "title": "Global Tokens",
+      "description": "Raw values (colors, spacing, radius, typography, shadows, motion), sourced from the Figma GTC design system. Always install this first — it is the foundation of the entire system.",
       "files": [
         {
-          "path": "registry/tokens/base/primitives.css",
+          "path": "registry/tokens/base/global.css",
           "type": "registry:style",
-          "target": "src/styles/ds/primitives.css"
+          "target": "src/styles/ds/global.css"
         },
         {
           "path": "registry/tokens/base/reset.css",
@@ -29,7 +29,7 @@
       "title": "Semantic Tokens",
       "description": "Semantic token layer that maps primitives to meaning (brand, surface, text, border, status). Install after tokens-base. Brand themes override these slots.",
       "registryDependencies": [
-        "ptrckschrdtr-ds/tokens-base"
+        "ptrckschrdtr-ds/tokens-global"
       ],
       "files": [
         {

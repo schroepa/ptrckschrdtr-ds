@@ -1,0 +1,177 @@
+/**
+ * ptrckschrdtr-ds — Global Tokens
+ * ─────────────────────────────────
+ * Raw values, sourced from the Figma "ptrckschrdtr GTC DS" file
+ * (Global tier, gtc-tokens.json). Never reference these directly in
+ * components — use Theme or Component tokens instead.
+ *
+ * Tokens commented "extension" do not exist in the Figma file. They
+ * were added to keep existing components working; update them if/when
+ * Figma defines the real value.
+ */
+
+:root {
+  /* ── Color: Neutral Ramp (13 steps) ─────────────────────── */
+  --global-color-base-0:  #0a0907;
+  --global-color-base-1:  #0c0b09;
+  --global-color-base-2:  #13110f;
+  --global-color-base-3:  #211f1d;
+  --global-color-base-4:  #66635f;
+  --global-color-base-5:  #82807d;
+  --global-color-base-6:  #918f8b;
+  --global-color-base-7:  #a09e9b;
+  --global-color-base-8:  #dfdedb;
+  --global-color-base-9:  #e6e4e2;
+  --global-color-base-10: #f3f1f0;
+  --global-color-base-11: #f6f5f3;
+  --global-color-base-12: #ffffff;
+
+  /* ── Color: Accent (Destructive) ─────────────────────────── */
+  --global-color-accent-vivid:    #e7000b; /* light-mode surfaces */
+  --global-color-accent-bright:   #ff6467; /* dark-mode surfaces */
+  --global-color-accent-a-subtle: rgba(231, 0, 11, 0.08);
+  --global-color-accent-a-strong: rgba(231, 0, 11, 0.16);
+
+  /* ── Color: Success ───────────────────────────────────────── */
+  --global-color-success-vivid:    #267d30;
+  --global-color-success-bright:   #5bbe62;
+  --global-color-success-a-subtle: rgba(38, 125, 48, 0.08);
+  --global-color-success-a-strong: rgba(38, 125, 48, 0.16);
+
+  /* ── Color: Warning (extension — not in Figma) ────────────── */
+  --global-color-warning-vivid:    #ca8a04;
+  --global-color-warning-bright:   #facc15;
+  --global-color-warning-a-subtle: rgba(202, 138, 4, 0.08);
+  --global-color-warning-a-strong: rgba(202, 138, 4, 0.16);
+
+  /* ── Color: Info (extension — not in Figma) ───────────────── */
+  --global-color-info-vivid:    #0284c7;
+  --global-color-info-bright:   #38bdf8;
+  --global-color-info-a-subtle: rgba(2, 132, 199, 0.08);
+  --global-color-info-a-strong: rgba(2, 132, 199, 0.16);
+
+  /* ── Color: Overlay ───────────────────────────────────────── */
+  --global-color-overlay-white-a10: rgba(255, 255, 255, 0.10);
+  --global-color-overlay-white-a15: rgba(255, 255, 255, 0.15);
+
+  /* ── Typography: Font Families ────────────────────────────── */
+  --global-font-family-sans:    'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --global-font-family-mono:    'Geist Mono', ui-monospace, "Cascadia Code", monospace;
+  --global-font-family-display: 'PP Editorial New', ui-serif, Georgia, serif;
+  /* Import Geist / Geist Mono / PP Editorial New in the consuming
+     project. Geist + Geist Mono: https://vercel.com/font — PP Editorial
+     New is a licensed font (Pangram Pangram) — bring your own files. */
+
+  /* ── Typography: Type Scale ────────────────────────────────── */
+  --global-type-scale-ratio: 1.25; /* Major Third — generative source for the steps below */
+
+  --global-font-size-xs:   0.625rem;  /* 10px */
+  --global-font-size-sm:   0.8125rem; /* 13px */
+  --global-font-size-base: 1rem;      /* 16px */
+  --global-font-size-md:   1.25rem;   /* 20px */
+  --global-font-size-lg:   1.5625rem; /* 25px */
+  --global-font-size-xl:   1.9375rem; /* 31px */
+  --global-font-size-2xl:  2.4375rem; /* 39px */
+  --global-font-size-3xl:  3.0625rem; /* 49px */
+  --global-font-size-4xl:  3.8125rem; /* 61px */
+  --global-font-size-5xl:  4.75rem;   /* 76px */
+
+  /* ── Typography: Font Weights ──────────────────────────────── */
+  --global-font-weight-regular:   400;
+  --global-font-weight-medium:    500;
+  --global-font-weight-semibold:  600;
+  --global-font-weight-bold:      700;
+  --global-font-weight-extrabold: 800;
+
+  /* ── Typography: Line Heights ──────────────────────────────── */
+  --global-line-height-tight:  1.1;
+  --global-line-height-snug:   1.3;
+  --global-line-height-normal: 1.6;
+  --global-line-height-loose:  1.8;
+
+  /* ── Typography: Letter Spacing ────────────────────────────── */
+  --global-letter-spacing-tight:  -0.03em;
+  --global-letter-spacing-snug:   -0.01em;
+  --global-letter-spacing-normal: 0em;
+  --global-letter-spacing-wide:   0.06em;
+
+  /* ── Control Heights (fixed heights for icon-bearing controls) ── */
+  --global-control-height-14: 0.875rem;  /* 14px */
+  --global-control-height-20: 1.25rem;   /* 20px */
+  --global-control-height-24: 1.5rem;    /* 24px */
+  --global-control-height-31: 1.9375rem; /* 31px */
+
+  /* ── Spacing (Size Unit) ────────────────────────────────────── */
+  --global-size-unit-0:   0px;
+  --global-size-unit-0-5: 0.125rem; /* 2px */
+  --global-size-unit-1:   0.25rem;  /* 4px */
+  --global-size-unit-1-5: 0.375rem; /* 6px */
+  --global-size-unit-2:   0.5rem;   /* 8px */
+  --global-size-unit-3:   0.75rem;  /* 12px */
+  --global-size-unit-4:   1rem;     /* 16px */
+  --global-size-unit-6:   1.5rem;   /* 24px */
+  --global-size-unit-8:   2rem;     /* 32px */
+  --global-size-unit-12:  3rem;     /* 48px */
+  --global-size-unit-16:  4rem;     /* 64px */
+  --global-size-unit-24:  6rem;     /* 96px */
+  --global-size-unit-32:  8rem;     /* 128px */
+
+  /* ── Border Radius ──────────────────────────────────────────── */
+  --global-radius-none: 0px;
+  --global-radius-xs:   0.125rem; /* 2px */
+  --global-radius-sm:   0.25rem;  /* 4px */
+  --global-radius-md:   0.5rem;   /* 8px */
+  --global-radius-lg:   0.75rem;  /* 12px */
+  --global-radius-xl:   1rem;     /* 16px */
+  --global-radius-2xl:  1.5rem;   /* 24px */
+  --global-radius-3xl:  1.75rem;  /* 28px */
+  --global-radius-4xl:  2rem;     /* 32px */
+  --global-radius-full: 1.25rem;  /* 20px — a regular scale step */
+  --global-radius-pill: 999px;    /* forces full rounding regardless of height */
+  --global-radius-4-32: 4.32px;   /* Checkbox radius */
+  --global-radius-5-76: 5.76px;   /* Tabs-trigger radius */
+  --global-radius-7-2:  7.2px;    /* Alert / Tabs-list radius */
+
+  /* ── Border Width ───────────────────────────────────────────── */
+  --global-border-width-hairline: 1px;
+  --global-border-width-thin:     2px;
+
+  /* ── Motion ─────────────────────────────────────────────────── */
+  --global-motion-duration-fast: 150ms;
+  --global-motion-duration-base: 250ms;
+  --global-motion-duration-slow: 400ms;
+  --global-motion-easing-in:     cubic-bezier(0.4, 0, 1, 1);
+  --global-motion-easing-out:    cubic-bezier(0, 0, 0.2, 1);
+  --global-motion-easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Z-Index ────────────────────────────────────────────────── */
+  --global-z-index-base:     0;
+  --global-z-index-dropdown: 10;
+  --global-z-index-overlay:  20;
+  --global-z-index-modal:    30;
+  --global-z-index-toast:    40;
+
+  /* ── Opacity ────────────────────────────────────────────────── */
+  --global-opacity-0:   0;
+  --global-opacity-25:  0.25;
+  --global-opacity-50:  0.5;
+  --global-opacity-75:  0.75;
+  --global-opacity-100: 1;
+
+  /* ── Blur ───────────────────────────────────────────────────── */
+  --global-blur-sm: 0.25rem; /* 4px */
+  --global-blur-md: 0.75rem; /* 12px */
+  --global-blur-lg: 1.5rem;  /* 24px */
+
+  /* ── Shadow ─────────────────────────────────────────────────── */
+  --global-shadow-sm:   0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --global-shadow-md:   0 4px 6px -1px rgb(0 0 0 / 0.10), 0 2px 4px -2px rgb(0 0 0 / 0.10);
+  --global-shadow-lg:   0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -4px rgb(0 0 0 / 0.15);
+  --global-shadow-none: none; /* extension — needed for Card's outlined/ghost variants */
+
+  /* ── Icon Sizes ─────────────────────────────────────────────── */
+  --global-icon-size-xs: 0.75rem; /* 12px */
+  --global-icon-size-sm: 1rem;    /* 16px */
+  --global-icon-size-md: 1.25rem; /* 20px */
+  --global-icon-size-lg: 1.5rem;  /* 24px */
+}
