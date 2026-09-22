@@ -12,6 +12,12 @@ come up.
   search. Should work well from the mobile drawer too (search beats
   scrolling a long list on small screens).
 
+- [ ] **Colored letter-icon avatars on homepage component cards** — use
+  our own Avatar component (`type="initials"`, one accent color per
+  card) on the `docs-component-grid` cards instead of plain text.
+  Inspired by markodenic.tech's Tools page card grid. Polish, not
+  substance — do after the command palette.
+
 ## Done
 
 - [x] Global → Theme → Component token migration (Figma GTC source)
