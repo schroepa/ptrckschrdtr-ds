@@ -1,0 +1,151 @@
+---
+/**
+ * ptrckschrdtr-ds — Docs Site: Liquid Toggle
+ * ─────────────────────────────────────────
+ * A more prominent dark/light switch using an SVG goo filter (two circles
+ * that visually merge/stretch as the thumb moves) — technique adapted
+ * from bencho.dev's "Liquid toggle" block (MIT), reimplemented in vanilla
+ * JS/SVG instead of React + Framer Motion so this project doesn't need to
+ * add a rendering framework for one control. Docs-site chrome only — not
+ * part of the distributed registry.
+ *
+ * Replaces the plain Switch-based theme toggle in DocsLayout.astro.
+ */
+---
+
+<button
+  type="button"
+  class="liquid-toggle"
+  role="switch"
+  aria-checked="false"
+  aria-label="Toggle dark mode"
+  id="docs-theme-toggle"
+>
+  <svg class="liquid-toggle__blobs" viewBox="0 0 64 32" aria-hidden="true">
+    <defs>
+      <filter id="liquid-goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+      </filter>
+    </defs>
+    <g filter="url(#liquid-goo)">
+      <circle class="liquid-toggle__drop" cx="16" cy="16" r="9" />
+      <circle class="liquid-toggle__thumb" cx="16" cy="16" r="11" />
+    </g>
+  </svg>
+</button>
+
+<script>
+  const THUMB_MIN = 16
+  const THUMB_MAX = 48
+  const FOLLOW_SPEED = 0.28 // thumb: how fast it chases the target
+  const DROP_LAG = 0.16 // drop: how fast it chases the thumb (slower = more stretch)
+  const SETTLE_EPSILON = 0.15
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  document.querySelectorAll<HTMLButtonElement>('.liquid-toggle').forEach((toggle) => {
+    const thumb = toggle.querySelector<SVGCircleElement>('.liquid-toggle__thumb')
+    const drop = toggle.querySelector<SVGCircleElement>('.liquid-toggle__drop')
+    if (!thumb || !drop) return
+
+    let thumbX = THUMB_MIN
+    let dropX = THUMB_MIN
+    let targetX = THUMB_MIN
+    let rafId: number | null = null
+
+    function isDark() {
+      return document.documentElement.dataset.theme === 'dark'
+    }
+
+    function setPositions(x: number, d: number) {
+      thumb!.setAttribute('cx', String(x))
+      drop!.setAttribute('cx', String(d))
+    }
+
+    function tick() {
+      thumbX += (targetX - thumbX) * FOLLOW_SPEED
+      dropX += (thumbX - dropX) * DROP_LAG
+      setPositions(thumbX, dropX)
+
+      const settled = Math.abs(targetX - thumbX) < SETTLE_EPSILON && Math.abs(thumbX - dropX) < SETTLE_EPSILON
+      if (settled) {
+        thumbX = targetX
+        dropX = targetX
+        setPositions(thumbX, dropX)
+        rafId = null
+        return
+      }
+      rafId = requestAnimationFrame(tick)
+    }
+
+    function animateTo(x: number) {
+      targetX = x
+      if (reduceMotion) {
+        thumbX = x
+        dropX = x
+        setPositions(thumbX, dropX)
+        return
+      }
+      if (rafId === null) rafId = requestAnimationFrame(tick)
+    }
+
+    function sync(persist: boolean) {
+      const dark = isDark()
+      toggle.setAttribute('aria-checked', String(dark))
+      animateTo(dark ? THUMB_MAX : THUMB_MIN)
+      if (persist) localStorage.setItem('theme', dark ? 'dark' : 'light')
+    }
+
+    toggle.addEventListener('click', () => {
+      const nextDark = !isDark()
+      document.documentElement.dataset.theme = nextDark ? 'dark' : 'light'
+      sync(true)
+    })
+
+    // Initial position, no localStorage write (page already set data-theme on load)
+    sync(false)
+  })
+</script>
+
+<style>
+  .liquid-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 32px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: var(--global-radius-pill);
+    background-color: var(--theme-border-default);
+    cursor: pointer;
+    transition: background-color var(--theme-transition-default), transform 90ms ease-out;
+    flex-shrink: 0;
+  }
+
+  .liquid-toggle:active {
+    transform: scale(0.96);
+  }
+
+  .liquid-toggle[aria-checked='true'] {
+    background-color: var(--theme-button-primary-bg);
+  }
+
+  .liquid-toggle:focus-visible {
+    outline: 2px solid var(--theme-border-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .liquid-toggle__blobs {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .liquid-toggle__thumb,
+  .liquid-toggle__drop {
+    fill: var(--global-color-base-12);
+  }
+</style>
