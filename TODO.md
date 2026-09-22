@@ -6,12 +6,6 @@ come up.
 
 ## Planned
 
-- [ ] **⌘K command palette** — search overlay triggered by `⌘K`/`Ctrl+K` or
-  a header button, listing Home, Tokens, and all 11 components with
-  arrow-key navigation and Enter-to-open. Inspired by markodenic.tech's
-  search. Should work well from the mobile drawer too (search beats
-  scrolling a long list on small screens).
-
 - [ ] **Colored letter-icon avatars on homepage component cards** — use
   our own Avatar component (`type="initials"`, one accent color per
   card) on the `docs-component-grid` cards instead of plain text.
@@ -20,6 +14,16 @@ come up.
 
 ## Done
 
+- [x] ⌘K command palette — search overlay listing Home, Tokens, and all
+  11 components, arrow-key navigation, Enter-to-open. Trigger's
+  press/hover feel adapted from bencho.dev's "Search" block (MIT),
+  reimplemented in vanilla JS (no new dependency); results overlay is
+  our own build since the block itself was only ever the trigger shell.
+- [x] Liquid dark/light toggle in the header — SVG goo-filter thumb,
+  technique adapted from bencho.dev's "Liquid toggle" block (MIT),
+  reimplemented without Framer Motion (small hand-rolled
+  requestAnimationFrame chase instead) to avoid adding React as a
+  rendering framework. Respects prefers-reduced-motion.
 - [x] Global → Theme → Component token migration (Figma GTC source)
 - [x] 6 new components: Checkbox, Switch, Avatar, Separator, Alert, Tabs
 - [x] Real font loading (Geist Variable, Geist Mono, PP Editorial New)
